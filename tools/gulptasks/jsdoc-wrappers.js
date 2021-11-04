@@ -76,7 +76,7 @@ function jsdocWrappers() {
         .then(() => process.exec('mkdir -p build/api'))
         .then(() => log.warn('Downloading', 'Wrapper documentation...'))
         .then(() => Promise.all(promises))
-        .then(() => log.warn('Done. Upload with gulp task "upload-wrapper-apidocs".'))
+        .then(() => log.warn('Done. Upload with gulp task "jsdoc-upload --docs android,ios".'))
         .catch(e => log.error(e));
 }
 
