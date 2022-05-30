@@ -1,0 +1,504 @@
+h2 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-top: 30px;
+}
+
+.code {
+  font-family: monospace;
+  background-color: #efefef;
+  padding: 1px 4px;
+}
+
+#startSynth {
+  height: 2.5rem;
+}
+
+#help {
+  font-size: 0.8rem;
+  padding: 20px 40px;
+  max-width: 895px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #f8f8f8;
+}
+
+#help h2 {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+#help p {
+  margin: 0;
+  margin-top: 8px;
+}
+
+#showHelp {
+  margin-bottom: 20px;
+  padding: 5px 20px;
+}
+
+.json {
+  font-family: monospace;
+  background-color: #444;
+  color: #d6eed6;
+  padding: 10px;
+  height: 200px;
+  width: 100%;
+  overflow-y: scroll;
+  resize: none;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.firstrow {
+  align-items: stretch;
+  gap: 2px;
+  margin-bottom: 20px;
+  max-width: 1500px;
+}
+
+.firstrow p {
+  margin: 0;
+}
+
+#intro {
+  font-size: 1.1rem;
+  padding: 20px;
+  background-color: #e1f6fe;
+}
+
+#keyStatus {
+  background-color: #f3f2fc;
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+}
+
+.chart {
+  height: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+.globalControls {
+  display: inline-flex;
+  align-items: flex-start;
+  margin-top: 30px;
+  background-color: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  padding: 20px;
+}
+
+.globalControls h2 {
+  margin-top: 0;
+}
+
+.globalControls h3 {
+  margin-top: 5px;
+  margin-left: 30px;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+.globalControls .chart {
+  width: 250px;
+  margin-left: 20px;
+}
+
+.globalControls input {
+  display: block;
+  margin-top: 5px;
+}
+
+.globalControls label {
+  margin-top: 20px;
+  display: block;
+}
+
+button {
+  height: 1.9rem;
+  background: none;
+  cursor: pointer;
+  padding: 2px 16px;
+  border-radius: 3px;
+  border: 1px solid #aaa;
+  background-color: #fafafa;
+}
+
+button:hover {
+  background-color: #efefef;
+}
+
+button:active {
+  background-color: #e0e0e0;
+}
+
+.masterVolume {
+  display: block;
+  margin-top: 7px;
+}
+
+.presetLabel {
+  font-size: 1rem;
+  margin: 10px 5px;
+}
+
+.preset {
+  width: 150px;
+  height: 1.8rem;
+  margin-left: 5px;
+}
+
+.masterEQ {
+  margin-left: 20px;
+}
+
+.eqSliders {
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.eqSlider .gain {
+  -webkit-appearance: slider-vertical;
+  width: 50px;
+}
+
+.eqSlider input[type="number"] {
+  width: 3.5rem;
+  text-align: center;
+}
+
+.resetEQ {
+  height: 1.3rem;
+  font-size: 0.7rem;
+  justify-self: flex-end;
+  margin-bottom: 6px;
+}
+
+.addOsc {
+  height: 30px;
+  margin-top: 10px;
+  background-color: #d5f3d5;
+  border: 1px solid #616161;
+}
+
+.addOsc:hover {
+  background-color: #e6f2e6;
+  border: 1px solid #455;
+}
+
+.addOsc:active {
+  background-color: #dcece9;
+}
+
+.span2 {
+  grid-column-end: span 2;
+}
+
+.oscillator {
+  background-color: #fafafa;
+  border: 1px solid #d7d7d7;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.oscillator .controlsContainer {
+  display: grid;
+  column-gap: 2px;
+  align-items: center;
+  row-gap: 5px;
+  grid-template-columns: 11rem 3rem 3.5rem;
+}
+
+.oscillator h3 {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.oscillator button:not(.chartReset) {
+  background-color: #af1919;
+  color: white;
+  padding: 5px;
+  float: right;
+}
+
+.oscillator select {
+  height: 1.4rem;
+}
+
+.oscillator .chart {
+  margin-top: 20px;
+}
+
+.chartlabel {
+  font-size: 0.85rem;
+  margin-left: 3px;
+}
+
+.chartReset {
+  position: absolute;
+  right: 8px;
+  font-size: 0.8rem;
+  height: 1.2rem;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.patch-panel {
+
+}
+
+.tracker {
+  font-family: monospace;
+  color: #fafafa;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 1050px;
+  width: 280px;
+}
+
+.tracker .track-selection {
+  height: 32px;
+  box-sizing: border-box;
+  padding-left: 32px;
+}
+
+.tracker .track-label {
+  font-size: 10px;
+  background: #222288;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-right: 2px solid #222;
+  width: 62px;
+  max-width: 62px;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.tracker .track-label-selected {
+  background: #228822;
+}
+
+.tracker .octave-label {
+  padding-top: 10px;
+}
+
+.tracker .left {
+  background: #222;
+  position: absolute;
+  width: 300px;
+  box-sizing: border-box;
+  border-right: 1px solid #eee;
+  height: 1050px;
+}
+
+.tracker .right {
+  background: #222;
+  position: absolute;
+  width: 300px;
+  left: 305px;
+  height: 1050px;
+  box-sizing: border-box;
+}
+
+.tracker h2 {
+  text-align: center;
+}
+
+.tracker .help-text {
+  padding: 10px;
+}
+
+.tracker .grid-header {
+  width: 100%;
+  padding-left: 12px;
+  height: 80px;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 10px;
+}
+
+.tracker .grid-footer {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tracker .pattern-controls {
+  height: 40px;
+}
+
+.tracker .next-pattern {
+  float: right;
+}
+
+.tracker .prev-pattern {
+  float: left;
+}
+
+.tracker .pattern-label {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.tracker .options {
+  padding-top: 10px;
+}
+
+.tracker .options table {
+  width: 100%;
+  max-width: 300px;
+}
+
+.tracker .grid {
+  height: 400px;
+  width: 100%;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.tracker .beat-step-row {
+  background: #444;
+}
+
+.tracker .division-step-row {
+  background: #333;
+}
+
+.tracker .step-row {
+}
+
+.tracker .pattern-label {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tracker .prop-name {
+  min-width: 180px;
+}
+
+.tracker .step {
+  width: 56px;
+  font-family: monospace;
+  font-size: 20px;
+  background: none;
+  border: none;
+  padding: 2px;
+  max-width: 56px;
+  color: #b5b5b5;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.tracker .step:hover {
+  //border: 1px solid #999 !important;
+  //padding: 0px !important;
+}
+
+.tracker .step-active {
+  border: 1px solid #8f8f11 !important;
+  padding: 0px !important;
+}
+
+.tracker .playing-step {
+  background: #117711 !important;
+}
+
+.tracker .step-label {
+  padding: 4px;
+  font-family: monospace;
+  color: #fafafa;
+  font-weight: bold;
+}
+
+.tracker .play-controls {
+  position: absolute;
+  height: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.tracker .prop-pair {
+  float: left;
+  margin-right: 10px;
+}
+
+.tracker .prop-value {
+  width: 40px;
+}
+
+.tracker .play-button {
+  background: #118f11;
+}
+
+.tracker .play-button:hover {
+  background: #11aa11;
+}
+
+.tracker button {
+  font-family: monospace;
+  font-size: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: none;
+  border: 1px solid #111;
+  color: #fafafa;
+  background: #333;
+}
+
+.tracker button:hover {
+  background: #444;
+}
+
+.tracker input {
+  font-family: monospace;
+  font-size: 20px;
+  outline: none;
+  background: none;
+  border: 1px solid #111;
+  max-width: 50px;
+  color: #afaf11;
+  text-align: center;
+  font-weight: bold;
+}
+
+.tracker table {
+  border-spacing: 0px;
+}
+
+.tracker td {
+  border-bottom: 1px solid #777;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+}
+
+.tracker td:first-child {
+  padding-left: 5px;
+  padding-right: 5px;
+}
