@@ -16,6 +16,7 @@ const defTracks = 4;    // How many tracks should we support?
 
 let audioContext;
 let uidCounter = 0; // For control IDs
+let synthEditor;
 const el = document.getElementById.bind(document),
     childValue = (parent, childSelector) =>
         parent.querySelector(childSelector).value,
@@ -32,19 +33,27 @@ const el = document.getElementById.bind(document),
     };
 
 
-// Note: always plays the sequence on the first synth.
-function playSequence(notes, durationMultiplier) {
-    // if (audioContext && synths[0]) {
-    //     const t = audioContext.currentTime;
-    //     notes.forEach(
-    //         (freq, i) => synths[0].synthPatch.playFreqAtTime(
-    //             t + i * 0.1 * durationMultiplier, freq, 150 * durationMultiplier
-    //         )
-    //     );
-    // }
+function newSynth(audioContext, options) {
+    const s = new SynthPatch(audioContext, options);
+    s.connect(audioContext.destination);
+    s.startSilently();
+    return s;
 }
-const playJingle = () => playSequence([261.63, 329.63, 392, 523.25], 1);
-const playWideRange = () => playSequence([
+
+
+function playSequence(synth, notes, durationMultiplier) {
+    if (audioContext && synth) {
+        const t = audioContext.currentTime;
+        notes.forEach(
+            (freq, i) => synth.playFreqAtTime(
+                t + i * 0.1 * durationMultiplier, freq, 150 * durationMultiplier
+            )
+        );
+    }
+}
+const playJingle = synth => playSequence(synth,
+    [261.63, 329.63, 392, 523.25], 1);
+const playWideRange = synth => playSequence(synth, [
     49.00, 65.41, 82.41, 87.31, 130.81, 174.61, 220.00, 261.63, 329.63,
     392.00, 493.88, 523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98,
     1975.53, 2093.00
@@ -227,15 +236,14 @@ function addOscControls(controlsContainerEl, options) {
 }
 
 
-class Synth {
+class SynthEditor {
 
     constructor(htmlContainerEl) {
-        const synth = this;
+        const synthEditor = this;
         this.container = htmlContainerEl;
         this.oscIdCounter = 1;
         this.oscillators = [];
-        this.selectedTrack = 0;
-        this.tracks = new Array(defTracks);
+        this.activeSynthIx = 0;
 
         // TODO: HTML should probably be generated.
         this.child('.playWideRange').onclick = playWideRange;
@@ -246,7 +254,8 @@ class Synth {
         this.child('.preset').innerHTML = Object.keys(presets)
             .reduce((str, p) => `${str}<option value="${p}">${p}</option>`, '');
         this.child('.preset').onchange = function () {
-            synth.applyPreset(this.value);
+            const options = JSON.parse(presets[this.value]);
+            synthEditor.applyOptions(options);
             this.blur();
         };
         this.charts = {
@@ -258,18 +267,7 @@ class Synth {
             )
         };
         this.populateEQSliders();
-        setTimeout(() => this.applyPreset('basic'), 0);
-    }
-
-    activateTrack(track) {
-        this.selectedTrack = track;
-        this.updateFromUI();
-    }
-
-    playOnTrack(track, freq, dur) {
-        if (track < this.tracks.length && this.tracks[track]) {
-            this.tracks[track].playFreqAtTime(0, freq, dur);
-        }
+        setTimeout(() => this.applyOptions(JSON.parse(presets.basic)), 0);
     }
 
     addOscillator(options) {
@@ -354,11 +352,10 @@ class Synth {
     }
 
 
-    applyPreset(presetId) {
-        const options = JSON.parse(presets[presetId]),
-            envToChart = (chart, env) => this.charts[chart].series[0].setData(
-                (env || []).map(o => [o.t, o.vol])
-            );
+    applyOptions(options) {
+        const envToChart = (chart, env) => this.charts[chart].series[0].setData(
+            (env || []).map(o => [o.t, o.vol])
+        );
 
         // Reset first
         let i = this.oscillators.length;
@@ -388,9 +385,8 @@ class Synth {
                     opts[i].releaseEnvelope);
             });
             setTimeout(this.updateFromUI.bind(this), 0);
-            setTimeout(playJingle, 50);
+            setTimeout(() => playJingle(synths[this.activeSynthIx]), 50);
         }, 0);
-
     }
 
 
@@ -507,27 +503,33 @@ class Synth {
         0);
     }
 
+
     resetEQ() {
         this.container.querySelectorAll('.eqSliders .gain').forEach(input => (input.value = 0));
         this.updateFromUI();
     }
 
+
+    setActiveSynth(ix) {
+        this.activeSynthIx = ix;
+        this.applyOptions(synths[ix].options);
+    }
+
+
     updateFromUI() {
-        const options = this.getPatchOptionsFromUI();
+        const options = this.getPatchOptionsFromUI(),
+            asix = this.activeSynthIx;
         this.child('.json').textContent = JSON.stringify(options, null, ' ');
 
-        if (this.tracks[this.selectedTrack]) {
-            this.tracks[this.selectedTrack].stop();
+        if (synths[asix]) {
+            synths[asix].stop();
         }
 
         if (audioContext) {
-            this.tracks[this.selectedTrack] = new SynthPatch(
-                audioContext, options);
-            this.tracks[this.selectedTrack].connect(audioContext.destination);
-            this.tracks[this.selectedTrack].startSilently();
+            synths[asix] = newSynth(audioContext, options);
         }
-
     }
+
 
     // Update the lists of oscillators we can modulate in the UI
     updateModulationLists() {
@@ -557,11 +559,15 @@ class Synth {
 
 // Use synth --------------------------------------------------------------------------------------------
 
-const patches = [];
-
 el('startSynth').onclick = function () {
     audioContext = new AudioContext();
-    synths.push(new Synth(el('synthContainer')));
+
+    const basic = JSON.parse(presets.basic);
+    for (let i = 0; i < defTracks; ++i) {
+        synths.push(newSynth(audioContext, basic));
+    }
+
+    synthEditor = new SynthEditor(el('synthContainer'));
 
     el('controls').classList.remove('hidden');
     this.classList.add('hidden');
@@ -1121,9 +1127,7 @@ const Tracker = (id, options) => {
                                     }
                                 }
                             }
-                            props.onNote(
-                                selectedTrack, note.freq, note.duration
-                            );
+                            props.onNote(t, note.freq, note.duration);
                         }
                     }
                 }
@@ -1378,14 +1382,13 @@ const Tracker = (id, options) => {
 Tracker('tracker', {
     tracks: defTracks,
     onTrackSelection: track => {
-        console.log('selecting track', track);
-        if (synths && synths[0]) {
-            synths[0].activateTrack(track);
+        if (synthEditor) {
+            synthEditor.setActiveSynth(track);
         }
     },
     onNote: (track, freq, dur) => {
         if (synths.length) {
-            synths[0].playOnTrack(track, freq, dur);
+            synths[track].playFreqAtTime(0, freq, dur);
         }
     }
 });
