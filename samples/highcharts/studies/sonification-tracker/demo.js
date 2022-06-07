@@ -2,6 +2,11 @@
  * Synth patch editor for Highcharts Sonification Instruments
  * */
 
+/* eslint-disable jsdoc/require-param-type */
+/* eslint-disable jsdoc/require-param-description */
+/* eslint-disable no-use-before-define */
+/* eslint-disable require-unicode-regexp */
+
 ////////////////////////////////////////////////////////////////////////////////
 // General tweaks
 
@@ -27,17 +32,16 @@ const el = document.getElementById.bind(document),
     };
 
 
-
 // Note: always plays the sequence on the first synth.
 function playSequence(notes, durationMultiplier) {
-      // if (audioContext && synths[0]) {
-      //     const t = audioContext.currentTime;
-      //     notes.forEach(
-      //         (freq, i) => synths[0].synthPatch.playFreqAtTime(
-      //             t + i * 0.1 * durationMultiplier, freq, 150 * durationMultiplier
-      //         )
-      //     );
-      // }
+    // if (audioContext && synths[0]) {
+    //     const t = audioContext.currentTime;
+    //     notes.forEach(
+    //         (freq, i) => synths[0].synthPatch.playFreqAtTime(
+    //             t + i * 0.1 * durationMultiplier, freq, 150 * durationMultiplier
+    //         )
+    //     );
+    // }
 }
 const playJingle = () => playSequence([261.63, 329.63, 392, 523.25], 1);
 const playWideRange = () => playSequence([
@@ -224,7 +228,7 @@ function addOscControls(controlsContainerEl, options) {
 
 
 class Synth {
-    
+
     constructor(htmlContainerEl) {
         const synth = this;
         this.container = htmlContainerEl;
@@ -258,14 +262,14 @@ class Synth {
     }
 
     activateTrack(track) {
-      this.selectedTrack = track;
-      this.updateFromUI();
+        this.selectedTrack = track;
+        this.updateFromUI();
     }
 
     playOnTrack(track, freq, dur) {
-      if (track < this.tracks.length && this.tracks[track]) {
-        this.tracks[track].playFreqAtTime(0, freq, dur);
-      }
+        if (track < this.tracks.length && this.tracks[track]) {
+            this.tracks[track].playFreqAtTime(0, freq, dur);
+        }
     }
 
     addOscillator(options) {
@@ -517,7 +521,8 @@ class Synth {
         }
 
         if (audioContext) {
-            this.tracks[this.selectedTrack] = new SynthPatch(audioContext, options);
+            this.tracks[this.selectedTrack] = new SynthPatch(
+                audioContext, options);
             this.tracks[this.selectedTrack].connect(audioContext.destination);
             this.tracks[this.selectedTrack].startSilently();
         }
@@ -573,54 +578,55 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
 // TRACKER FOLLOWS
 ////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Attach onNoteChange callbacks with options.onNote, and track selection
-     * callbacks with options.onTrackSelection.
-     *
-     */
-    const Tracker = (id, options) => {
-      let props = Object.assign(
+/**
+ * Attach onNoteChange callbacks with options.onNote, and track selection
+ * callbacks with options.onTrackSelection.
+ *
+ * @param id
+ * @param options
+ */
+const Tracker = (id, options) => {
+    let props = Object.assign(
         {
-          bpm: 120,
-          steps: 48,
-          tracks: 8,
-          patterns: 4,
-          stepJumps: 1,
-          follow: true,
-          autoStep: false,
-          notePreview: true,
-          inSongMode: false,
-          aSustain: false,
-          onNote: (track, freq, duration) =>
-            console.log("playing ", freq, " dur: ", duration),
-          onTrackSelection: (track) => console.log("selecting track", track),
-          onLoadProject: (adata) => console.log("project loaded"),
+            bpm: 120,
+            steps: 48,
+            tracks: 8,
+            patterns: 4,
+            stepJumps: 1,
+            follow: true,
+            autoStep: false,
+            notePreview: true,
+            inSongMode: false,
+            aSustain: false,
+            onNote: (track, freq, duration) =>
+                console.log("playing ", freq, " dur: ", duration),
+            onTrackSelection: track => console.log("selecting track", track),
+            onLoadProject: () => console.log("project loaded")
         },
         options || {}
-      );
+    );
 
-      let stepRowsNodes = [];
+    let stepRowsNodes = [];
 
-      let isPlaying = false;
-      let playTime = 0;
-      let playStartTime = 0;
-      let playingStep = 0;
-      let lastPlayingStep = -1;
-      let stepTimer = 0;
-      let lastStepTime = 0;
+    let isPlaying = false;
+    let playTime = 0;
+    let playStartTime = 0;
+    let playingStep = 0;
+    let lastPlayingStep = -1;
+    let lastStepTime = 0;
 
-      let selectedTrack = 0;
-      let selectedPattern = 0;
-      let selectedOctave = 4;
-      let selectedStep = 0;
-      let songCursor = 0;
+    let selectedTrack = 0;
+    let selectedPattern = 0;
+    let selectedOctave = 4;
+    let selectedStep = 0;
+    let songCursor = 0;
 
-      let data = [];
-      let gridNodes = [];
-      let trackNodes = [];
-      let song = [0, 1, 0, 3];
+    const data = [];
+    const gridNodes = [];
+    let trackNodes = [];
+    let song = [0, 1, 0, 3];
 
-      const notes = [
+    const notes = [
         { name: "C", key: "a", num: 0 },
         { name: "C#", key: "w", num: 1 },
         { name: "D", key: "s", num: 2 },
@@ -633,48 +639,51 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
         { name: "A", key: "h", num: 9 },
         { name: "A#", key: "u", num: 10 },
         { name: "B", key: "j", num: 11 },
-        { name: "STOP", key: "x", num: 12, hideOctave: true },
-      ];
+        { name: "STOP", key: "x", num: 12, hideOctave: true }
+    ];
 
-      const genKBSvg = () => {
-        let w = 268;
+    const genKBSvg = () => {
+        const w = 268;
         let xcursor = 0;
-        let kwidth = w / 8;
+        const kwidth = w / 8;
 
         const keys = notes
-          .map((note, i) => {
-            const y = 0;
-            i && note.name.indexOf("#") < 0 ? (xcursor += kwidth) : 0;
-            return note.name.indexOf("#") > 0
-              ? ``
-              : `
-                <rect width="${kwidth}"x="${xcursor}" y="${y}" height="80" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0);"/>
+            .map((note, i) => {
+                const y = 0;
+                // eslint-disable-next-line no-unused-expressions
+                i && note.name.indexOf("#") < 0 ? (xcursor += kwidth) : 0;
+                return note.name.indexOf("#") > 0 ?
+                    `` :
+                    `
+                <rect width="${kwidth}"x="${xcursor}" y="${y}" height="80"
+                    fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0);"/>
                 <text text-anchor="middle"  x="${
-                  xcursor + kwidth / 2
-                }" y="70">${note.key}</text>
+    xcursor + kwidth / 2
+}" y="70">${note.key}</text>
           `;
-          })
-          .join("");
+            })
+            .join("");
 
         xcursor = 0;
 
         const bkeys = notes
-          .map((note, i) => {
-            const y = 0;
-            i && note.name.indexOf("#") < 0 ? (xcursor += kwidth) : 0;
-            return note.name.indexOf("#") > 0
-              ? `
+            .map((note, i) => {
+                const y = 0;
+                // eslint-disable-next-line no-unused-expressions
+                i && note.name.indexOf("#") < 0 ? (xcursor += kwidth) : 0;
+                return note.name.indexOf("#") > 0 ?
+                    `
                 <rect width="${kwidth / 2}"x="${
-                  kwidth + (xcursor - kwidth / 4)
-                }" y="${y}" height="60" fill="rgb(100, 100, 100)" stroke="rgb(0, 0, 0)"/>
+    kwidth + (xcursor - kwidth / 4)
+}" y="${y}" height="60" fill="rgb(100, 100, 100)" stroke="rgb(0, 0, 0)"/>
                 <text text-anchor="middle" fill="#eee" style="fill:#eee" x="${
-                  kwidth / 2 + (xcursor + kwidth / 2)
-                }" y="50">${note.key}</text>
-              `
-              : ``;
-          })
-          .join("");
- // `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    kwidth / 2 + (xcursor + kwidth / 2)
+}" y="50">${note.key}</text>
+              ` :
+                    ``;
+            })
+            .join("");
+        // `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
         return          ` <svg
              width="285px"
@@ -685,9 +694,10 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
               ${keys}${bkeys}
           </svg>
         `;
-      };
+    };
 
-      const helpText = `<b>Help is here!</b><br/><br/>
+    /* eslint-disable max-len */
+    const helpText = `<b>Help is here!</b><br/><br/>
       Each column is a track. Each track has a synth instance. Each row is a step.
       Selecting a track will bring up the synth instance for that track.
             <br/><br/>
@@ -711,177 +721,181 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
       You can chain up to four patterns. Enter their numbers in the pattern chain
           grid above. Tick "Song mode" to cycle through your chain when playing instead of looping the selected pattern.
       `;
+    /* eslint-enable max-len */
 
-      //////////////////////////////////////////////////////////////////////////
-      // DOM helpers
+    //////////////////////////////////////////////////////////////////////////
+    // DOM helpers
 
-      const scrollToOther = (what, to) => (what.scrollTop = to.offsetTop - 200);
+    const scrollToOther = (what, to) => (what.scrollTop = to.offsetTop - 200);
 
-      const nodef = (evnt, cb) => {
+    const nodef = (evnt, cb) => {
+        // eslint-disable-next-line node/callback-return
         cb();
         evnt.stopPropagation();
         evnt.preventDefault();
         return false;
-      };
+    };
 
-      const cr = (tp, cssClass, inner) => {
-        let e = document.createElement(tp);
+    const cr = (tp, cssClass, inner) => {
+        const e = document.createElement(tp);
         e.innerHTML = inner || "";
         e.className = cssClass || "";
         return e;
-      };
+    };
 
-      const crf = (tp, inner, funs, classname) => {
-        let n = cr(tp, classname, inner);
-        Object.keys(funs || {}).forEach((f) => {
-          n.addEventListener(f, funs[f]);
+    const crf = (tp, inner, funs, classname) => {
+        const n = cr(tp, classname, inner);
+        Object.keys(funs || {}).forEach(f => {
+            n.addEventListener(f, funs[f]);
         });
 
         if (tp === "input" && typeof inner !== "undefined") {
-          n.value = inner;
+            n.value = inner;
         }
 
         return n;
-      };
+    };
 
-      const ap = (parent, ...children) => {
-        children.forEach((c) => parent.appendChild(c));
+    const ap = (parent, ...children) => {
+        children.forEach(c => parent.appendChild(c));
         return parent;
-      };
+    };
 
-      const stepInput = (track, step) => {
+    const stepInput = (track, step) => {
         const inp = crf(
-          "div",
-          data[selectedPattern][track][step] || "-",
-          {
-            mousedown: () => {
-              select(track, step);
+            "div",
+            data[selectedPattern][track][step] || "-",
+            {
+                mousedown: () => {
+                    select(track, step);
+                }
             },
-          },
-          "step"
+            "step"
         );
 
         return inp;
-      };
+    };
 
-      const propPair = (propName, title, tp) => {
+    const propPair = (propName, title, tp) => {
         const lbl = cr("span", "", title);
         const inp = crf("input", "", {
-          change: () => {
-            props[propName] = tp === "checkbox" ? inp.checked : inp.value;
-          },
+            change: () => {
+                props[propName] = tp === "checkbox" ? inp.checked : inp.value;
+            }
         });
 
         inp.type = tp || "text";
 
         if (tp === "checkbox") {
-          inp.checked = props[propName];
+            inp.checked = props[propName];
         } else {
-          inp.value = props[propName];
+            inp.value = props[propName];
         }
 
         return ap(
-          cr("table"),
-          ap(
-            cr("tr"),
-            ap(cr("td", "prop-name"), lbl),
-            ap(cr("td", "prop-value"), inp)
-          )
+            cr("table"),
+            ap(
+                cr("tr"),
+                ap(cr("td", "prop-name"), lbl),
+                ap(cr("td", "prop-value"), inp)
+            )
         );
-      };
+    };
 
-      const resizeUI = () => {
+    const resizeUI = () => {
         const stepWidth = 62;
 
         rightPanel.style.width = props.tracks * stepWidth + 40 + "px";
-      };
+    };
 
-      const initGridUI = () => {
+    const initGridUI = () => {
         stepRowsNodes = [];
         tbody.innerHTML = "";
         songGridBody.innerHTML = "";
         trackSelection.innerHTML = "";
 
         for (let i = 0; i < song.length; ++i) {
-          ap(
-            songGridBody,
             ap(
-              cr("td"),
-              crf("input", song[i] + 1, {
-                change: (e) => {
-                  song[i] = wrap(
-                    (parseInt(e.target.value, 10) || 1) - 1,
-                    song.length
-                  );
-                  e.target.value = song[i] + 1;
-                  return nodef(e, () => {});
-                },
-              })
-            )
-          );
+                songGridBody,
+                ap(
+                    cr("td"),
+                    crf("input", song[i] + 1, {
+                        // eslint-disable-next-line no-loop-func
+                        change: e => {
+                            song[i] = wrap(
+                                (parseInt(e.target.value, 10) || 1) - 1,
+                                song.length
+                            );
+                            e.target.value = song[i] + 1;
+                            return nodef(e, () => {});
+                        }
+                    })
+                )
+            );
         }
 
         for (let j = 0; j < props.steps; ++j) {
-          const r = cr(
-            "tr",
-            "step-row " + (j % 4 === 0 ? "beat-step-row" : "division-step-row")
-          );
+            const r = cr(
+                "tr",
+                "step-row " + (j % 4 === 0 ? "beat-step-row" : "division-step-row")
+            );
 
-          stepRowsNodes.push(r);
+            stepRowsNodes.push(r);
 
-          ap(r, ap(cr("td"), cr("span", "step-label", j + 1)));
+            ap(r, ap(cr("td"), cr("span", "step-label", j + 1)));
 
-          for (let i = 0; i < props.tracks; ++i) {
-            gridNodes[i][j] = stepInput(i, j);
-            ap(r, ap(cr("td"), gridNodes[i][j]));
-          }
+            for (let i = 0; i < props.tracks; ++i) {
+                gridNodes[i][j] = stepInput(i, j);
+                ap(r, ap(cr("td"), gridNodes[i][j]));
+            }
 
-          ap(tbody, r);
+            ap(tbody, r);
         }
 
         trackNodes = [];
         for (let j = 0; j < props.tracks; ++j) {
-          let lbl = crf(
-            "span",
-            "TRACK " + (j + 1),
-            {
-              click: () => select(j, selectedStep),
-            },
-            "track-label"
-          );
-          trackNodes.push(lbl);
-          ap(trackSelection, lbl);
+            const lbl = crf(
+                "span",
+                "TRACK " + (j + 1),
+                {
+                    // eslint-disable-next-line no-loop-func
+                    click: () => select(j, selectedStep)
+                },
+                "track-label"
+            );
+            trackNodes.push(lbl);
+            ap(trackSelection, lbl);
         }
 
         resizeUI();
-      };
+    };
 
-      //////////////////////////////////////////////////////////////////////////
-      // General helpers
+    //////////////////////////////////////////////////////////////////////////
+    // General helpers
 
-      const calcFreq = (note, octave) =>
+    const calcFreq = (note, octave) =>
         Math.pow(2, (note + octave * 12 - 57) / 12) * 440;
 
-      const wrap = (v, max) => (v >= max ? 0 : v < 0 ? max - 1 : v);
+    const wrap = (v, max) => (v >= max ? 0 : v < 0 ? max - 1 : v);
 
-      //////////////////////////////////////////////////////////////////////////
-      // Actual guts
+    //////////////////////////////////////////////////////////////////////////
+    // Actual guts
 
-      const init = () => {
+    const init = () => {
         // Initialize empty data + tracknodes
         for (let p = 0; p < props.patterns; ++p) {
-          const pattern = [];
-          for (let t = 0; t < props.tracks; ++t) {
-            const track = [];
-            const tnodes = [];
-            for (let s = 0; s < props.steps; ++s) {
-              track.push(0);
-              tnodes.push(0);
+            const pattern = [];
+            for (let t = 0; t < props.tracks; ++t) {
+                const track = [];
+                const tnodes = [];
+                for (let s = 0; s < props.steps; ++s) {
+                    track.push(0);
+                    tnodes.push(0);
+                }
+                pattern.push(track);
+                gridNodes.push(tnodes);
             }
-            pattern.push(track);
-            gridNodes.push(tnodes);
-          }
-          data.push(pattern);
+            data.push(pattern);
         }
 
         selectedPattern = 0;
@@ -893,80 +907,83 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
 
         initGridUI();
         rewind();
-      };
+    };
 
-      const getNoteByPianoIndex = (pnote) => {
+    const getNoteByPianoIndex = pnote => {
         if (pnote === 90) {
-          return {
-            note: 12,
-            ocatave: 1,
-            id: 90,
-          };
+            return {
+                note: 12,
+                ocatave: 1,
+                id: 90
+            };
         }
 
         let octave = Math.floor(pnote / 12);
-        let note = pnote % 12;
+        const note = pnote % 12;
 
         octave = octave < 0 ? 0 : octave;
 
         return {
-          freq: calcFreq(note, octave),
-          note: note,
-          octave: octave,
-          id: note + octave * 12,
+            freq: calcFreq(note, octave),
+            note: note,
+            octave: octave,
+            id: note + octave * 12
         };
-      };
+    };
 
-      const addOrDelNoteInSelected = (note) => {
+    const addOrDelNoteInSelected = note => {
         const node = gridNodes[selectedTrack][selectedStep];
         if (node) {
-          if (!note) {
-            data[selectedPattern][selectedTrack][selectedStep] = 0;
-            node.innerHTML = "-";
-          } else {
-            node.innerHTML =
+            if (!note) {
+                data[selectedPattern][selectedTrack][selectedStep] = 0;
+                node.innerHTML = "-";
+            } else {
+                node.innerHTML =
               note.name + (notes[note.num].hideOctave ? "" : selectedOctave);
 
-            anote = {
-              freq: calcFreq(note.num, selectedOctave),
-              note: note.num,
-              octave: selectedOctave,
-              id: note.num === 12 ? 90 : note.num + selectedOctave * 12,
-            };
+                const anote = {
+                    freq: calcFreq(note.num, selectedOctave),
+                    note: note.num,
+                    octave: selectedOctave,
+                    id: note.num === 12 ? 90 : note.num + selectedOctave * 12
+                };
 
-            data[selectedPattern][selectedTrack][selectedStep] = anote;
+                data[selectedPattern][selectedTrack][selectedStep] = anote;
 
-            if (props.notePreview) {
-              props.onNote(selectedTrack, anote.freq, 500);
+                if (props.notePreview) {
+                    props.onNote(selectedTrack, anote.freq, 500);
+                }
+
+                if (props.autoStep) {
+                    select(
+                        selectedTrack,
+                        selectedStep + parseInt(props.stepJumps, 10)
+                    );
+                    if (props.follow) {
+                        scrollToOther(grid, node.parentNode);
+                    }
+                }
             }
-
-            if (props.autoStep) {
-              select(selectedTrack, selectedStep + parseInt(props.stepJumps));
-              if (props.follow) {
-                scrollToOther(grid, node.parentNode);
-              }
-            }
-          }
         }
-      };
+    };
 
-      const loadCurrentPatternInUI = () => {
+    const loadCurrentPatternInUI = () => {
         patternLabel.innerHTML = "Pattern " + (selectedPattern + 1);
         for (let s = 0; s < props.steps; ++s) {
-          for (let t = 0; t < props.tracks; ++t) {
-            const node = gridNodes[t][s];
-            const note = data[selectedPattern][t][s];
-            if (node) {
-              node.innerHTML = note
-                ? notes[note.note].name +
-                  (notes[note.note].hideOctave ? "" : note.octave)
-                : "-";
+            for (let t = 0; t < props.tracks; ++t) {
+                const node = gridNodes[t][s];
+                const note = data[selectedPattern][t][s];
+                if (node) {
+                    node.innerHTML = note ?
+                        notes[note.note].name +
+                  (notes[note.note].hideOctave ? "" : note.octave) :
+                        "-";
+                }
             }
-          }
         }
-      };
+    };
 
-      const select = (newTrack, newStep, scrollTo) => {
+    const select = (newTrack, newStep, scrollTo) => {
         newTrack = wrap(newTrack, props.tracks);
         newStep = wrap(newStep, props.steps);
 
@@ -974,213 +991,218 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
         const newNode = gridNodes[newTrack][newStep];
 
         if (trackNodes[selectedTrack]) {
-          trackNodes[selectedTrack].className = trackNodes[
-            selectedTrack
-          ].className.replace(/( track-label-selected)/g, "");
+            trackNodes[selectedTrack].className = trackNodes[
+                selectedTrack
+            ].className.replace(/( track-label-selected)/g, "");
         }
 
         if (trackNodes[newTrack]) {
-          trackNodes[newTrack].className += " track-label-selected";
+            trackNodes[newTrack].className += " track-label-selected";
         }
 
         if (oldNode) {
-          oldNode.className = oldNode.className.replace(/( step-active)/g, "");
+            oldNode.className = oldNode.className.replace(/( step-active)/g, "");
         }
 
         if (newNode) {
-          newNode.className += " step-active";
-          if (scrollTo) {
-            scrollToOther(grid, newNode.parentNode);
-          }
+            newNode.className += " step-active";
+            if (scrollTo) {
+                scrollToOther(grid, newNode.parentNode);
+            }
         }
 
+        // eslint-disable-next-line eqeqeq
         if (selectedTrack != newTrack) {
-          props.onTrackSelection(newTrack);
+            props.onTrackSelection(newTrack);
         }
 
         selectedTrack = newTrack;
         selectedStep = newStep;
 
         return true;
-      };
+    };
 
-      const selectOctave = (octave) => {
+    const selectOctave = octave => {
         selectedOctave = octave;
         octaveLabel.innerHTML = "octave: " + octave;
-      };
+    };
 
-      const selectPattern = (newPattern) => {
+    const selectPattern = newPattern => {
         selectedPattern = wrap(newPattern, props.patterns);
         loadCurrentPatternInUI();
-      };
+    };
 
-      const updatePlayMarker = () => {
+    const updatePlayMarker = () => {
         if (lastPlayingStep >= 0) {
-          stepRowsNodes[lastPlayingStep].className = stepRowsNodes[
-            lastPlayingStep
-          ].className.replace(/( playing-step)/g, "");
+            stepRowsNodes[lastPlayingStep].className = stepRowsNodes[
+                lastPlayingStep
+            ].className.replace(/( playing-step)/g, "");
         }
 
         stepRowsNodes[playingStep].className += " playing-step";
 
         if (props.follow) {
-          scrollToOther(grid, stepRowsNodes[playingStep]);
+            scrollToOther(grid, stepRowsNodes[playingStep]);
         }
-      };
+    };
 
-      const togglePlay = () => {
+    const togglePlay = () => {
         isPlaying = !isPlaying;
 
         if (isPlaying) {
-          playStartTime = new Date().getTime();
-          lastStepTime = 0;
-          playButton.innerHTML = "Stop";
+            playStartTime = new Date().getTime();
+            lastStepTime = 0;
+            playButton.innerHTML = "Stop";
         } else {
-          playButton.innerHTML = "Play";
+            playButton.innerHTML = "Play";
         }
-      };
+    };
 
-      const rewind = () => {
+    const rewind = () => {
         updatePlayMarker(); // remove old marker
         lastStepTime = 0;
         lastPlayingStep = playingStep;
         playingStep = 0;
         if (!isPlaying) {
-          updatePlayMarker();
-        }
-      };
-
-      const process = () => {
-        if (isPlaying) {
-          const stepsPerMs = 60000 / props.bpm / 4;
-          playTime = new Date().getTime() - playStartTime;
-
-          if (playTime - lastStepTime > stepsPerMs) {
-            lastStepTime = playTime;
-
             updatePlayMarker();
+        }
+    };
 
-            // Check for note events in data array
-            for (let t = 0; t < props.tracks; ++t) {
-              if (data[selectedPattern][t][playingStep]) {
-                // Call the play event
-                const note = data[selectedPattern][t][playingStep];
+    const process = () => {
+        if (isPlaying) {
+            const stepsPerMs = 60000 / props.bpm / 4;
+            playTime = new Date().getTime() - playStartTime;
 
-                if (note.id !== 90) {
-                  note.duration = stepsPerMs;
+            if (playTime - lastStepTime > stepsPerMs) {
+                lastStepTime = playTime;
 
-                  // This should be calculated on note add.
+                updatePlayMarker();
 
-                  const pnote = data[selectedPattern][t][playingStep - 1];
-                  if (props.aSustain && (!pnote || note.id !== pnote.id)) {
-                    for (let i = playingStep + 1; i < props.steps; ++i) {
-                      if (data[selectedPattern][t][i].id === note.id) {
-                        note.duration += stepsPerMs;
-                      } else {
-                        break;
-                      }
+                // Check for note events in data array
+                for (let t = 0; t < props.tracks; ++t) {
+                    if (data[selectedPattern][t][playingStep]) {
+                        // Call the play event
+                        const note = data[selectedPattern][t][playingStep];
+
+                        if (note.id !== 90) {
+                            note.duration = stepsPerMs;
+
+                            // This should be calculated on note add.
+
+                            const pnote =
+                                data[selectedPattern][t][playingStep - 1];
+                            if (
+                                props.aSustain &&
+                                (!pnote || note.id !== pnote.id)
+                            ) {
+                                for (
+                                    let i = playingStep + 1;
+                                    i < props.steps;
+                                    ++i
+                                ) {
+                                    if (data[selectedPattern][t][i].id ===
+                                        note.id) {
+                                        note.duration += stepsPerMs;
+                                    } else {
+                                        break;
+                                    }
+                                }
+                            } else if (!props.aSustain) {
+                                // Go until we hit *any* note.
+                                for (
+                                    let i = playingStep + 1;
+                                    i < props.steps;
+                                    ++i
+                                ) {
+                                    if (!data[selectedPattern][t][i]) {
+                                        note.duration += stepsPerMs;
+                                    } else {
+                                        break;
+                                    }
+                                }
+                            }
+                            props.onNote(
+                                selectedTrack, note.freq, note.duration
+                            );
+                        }
                     }
-                  } else if (!props.aSustain) {
-                    // Go until we hit *any* note.
-                    for (let i = playingStep + 1; i < props.steps; ++i) {
-                      if (!data[selectedPattern][t][i]) {
-                        note.duration += stepsPerMs;
-                      } else {
-                        break;
-                      }
-                    }
-                  }
-                  props.onNote(selectedTrack, note.freq, note.duration);
                 }
-              }
-            }
 
-            lastPlayingStep = playingStep;
-            ++playingStep;
-            if (playingStep >= props.steps) {
-              if (props.inSongMode) {
-                songCursor = wrap(songCursor + 1, song.length);
-                selectPattern(song[songCursor]);
-              }
-              playingStep = 0;
+                lastPlayingStep = playingStep;
+                ++playingStep;
+                if (playingStep >= props.steps) {
+                    if (props.inSongMode) {
+                        songCursor = wrap(songCursor + 1, song.length);
+                        selectPattern(song[songCursor]);
+                    }
+                    playingStep = 0;
+                }
             }
-          }
         }
 
         requestAnimationFrame(process);
-      };
+    };
 
-      //////////////////////////////////////////////////////////////////////////
-      // Serialization (aka Really Silly Compression Stuff)
-      // While run length encoding is fairly viable for certain data, this
-      // implementation is really bad & naive.
+    //////////////////////////////////////////////////////////////////////////
+    // Serialization (aka Really Silly Compression Stuff)
+    // While run length encoding is fairly viable for certain data, this
+    // implementation is really bad & naive.
 
-      // <num>_<repeats>!... | <num>! for one occurence
+    // <num>_<repeats>!... | <num>! for one occurence
 
-      const rle = () => {
-        let str = [];
+    const rle = () => {
+        const str = [];
 
         const steps = [];
 
         // Two passes so we can compress an entire track accross patterns.
         for (let t = 0; t < props.tracks; ++t) {
-          for (let p = 0; p < props.patterns; ++p) {
-            for (let i = 0; i < props.steps; ++i) {
-              steps.push(data[p][t][i] ? data[p][t][i].id + 1 : 0);
+            for (let p = 0; p < props.patterns; ++p) {
+                for (let i = 0; i < props.steps; ++i) {
+                    steps.push(data[p][t][i] ? data[p][t][i].id + 1 : 0);
+                }
             }
-          }
         }
 
         for (let i = 0; i < steps.length; ++i) {
-          const c = steps[i];
-          let count = 1;
+            const c = steps[i];
+            let count = 1;
 
-          for (; steps[i] === steps[i + 1] && i < steps.length; ++i) {
-            ++count;
-          }
+            for (; steps[i] === steps[i + 1] && i < steps.length; ++i) {
+                ++count;
+            }
 
-          str.push(count > 1 ? c + "_" + count : c);
+            str.push(count > 1 ? c + "_" + count : c);
         }
 
         return str.join("!");
-      };
+    };
 
-      const rld = (str) => {
-        let res = [];
-        let parsingCount = false;
-        let count = "";
-        let num = "";
-
-        const blocks = str.split("!");
-
-        let pos = 0;
-        str.split("!").forEach((b) => {
-          const pair = b.split("_");
-          const count = parseInt(pair[1]) || 1;
-          for (let i = 0; i < count; ++i) {
-            res.push(parseInt(pair[0]));
-          }
-          pos += count;
-
-          let pattern = pos % (props.tracks + props.patterns);
-          let track = (pos / props.tracks) % props.patterns;
+    const rld = str => {
+        const res = [];
+        str.split("!").forEach(b => {
+            const pair = b.split("_");
+            const count = parseInt(pair[1], 10) || 1;
+            for (let i = 0; i < count; ++i) {
+                res.push(parseInt(pair[0], 10));
+            }
         });
 
         return res;
-      };
+    };
 
 
-      const toCompressedStr = (additionalData) =>
+    const toCompressedStr = additionalData =>
         btoa(
-          JSON.stringify({
-            options: props,
-            song,
-            ad: additionalData,
-            data: rle(),
-          })
+            JSON.stringify({
+                options: props,
+                song,
+                ad: additionalData,
+                data: rle()
+            })
         );
 
-      const fromCompressedStr = (str) => {
+    const fromCompressedStr = str => {
         const obj = JSON.parse(atob(str));
 
         props = Object.assign(props, obj.options);
@@ -1192,177 +1214,178 @@ el('showHelp').onclick = () => el('help').classList.toggle('hidden');
         const a = rld(obj.data);
 
         for (let t = 0; t < props.tracks; ++t) {
-          for (let p = 0; p < props.patterns; ++p) {
-            for (let s = 0; s < props.steps; ++s) {
-              const n = a[s + p * props.steps + t * props.steps * props.patterns];
-              data[p][t][s] = !n ? 0 : getNoteByPianoIndex(n - 1);
+            for (let p = 0; p < props.patterns; ++p) {
+                for (let s = 0; s < props.steps; ++s) {
+                    const n = a[
+                        s + p * props.steps + t * props.steps * props.patterns
+                    ];
+                    data[p][t][s] = !n ? 0 : getNoteByPianoIndex(n - 1);
+                }
             }
-          }
         }
 
         loadCurrentPatternInUI();
 
         props.onLoadProject(props.ad);
-      };
+    };
 
-      //////////////////////////////////////////////////////////////////////////
-      // Event listeners for hotkeys
+    //////////////////////////////////////////////////////////////////////////
+    // Event listeners for hotkeys
 
-      // Keyboard keyboard
-      document.body.addEventListener("keydown", (e) =>
-        notes.forEach((note) =>
-          e.key === note.key ? addOrDelNoteInSelected(note) : true
+    // Keyboard keyboard
+    document.body.addEventListener("keydown", e =>
+        notes.forEach(note =>
+            (e.key === note.key ? addOrDelNoteInSelected(note) : true)
         )
-      );
+    );
 
-      // Octave switches
-      document.body.addEventListener("keydown", (e) =>
-        e.keyCode >= 48 && e.keyCode <= 56 && e.shiftKey
-          ? selectOctave(e.keyCode - 48)
-          : false
-      );
+    // Octave switches
+    document.body.addEventListener("keydown", e =>
+        (e.keyCode >= 48 && e.keyCode <= 56 && e.shiftKey ?
+            selectOctave(e.keyCode - 48) :
+            false)
+    );
 
-      // General hotkeys
-      document.body.addEventListener(
+    // General hotkeys
+    document.body.addEventListener(
         "keydown",
-        (e) =>
-          [
-            [32, togglePlay],
-            [13, () => select(selectedTrack, selectedStep + 1, 1)],
-            [37, () => select(selectedTrack - 1, selectedStep, 1)],
-            [38, () => select(selectedTrack, selectedStep - 1, 1)],
-            [39, () => select(selectedTrack + 1, selectedStep, 1)],
-            [40, () => select(selectedTrack, selectedStep + 1, 1)],
-            [8, () => addOrDelNoteInSelected(false)],
-            [46, () => addOrDelNoteInSelected(false)],
-          ].forEach((p) => (e.keyCode === p[0] ? nodef(e, p[1]) : false)),
+        e =>
+            [
+                [32, togglePlay],
+                [13, () => select(selectedTrack, selectedStep + 1, 1)],
+                [37, () => select(selectedTrack - 1, selectedStep, 1)],
+                [38, () => select(selectedTrack, selectedStep - 1, 1)],
+                [39, () => select(selectedTrack + 1, selectedStep, 1)],
+                [40, () => select(selectedTrack, selectedStep + 1, 1)],
+                [8, () => addOrDelNoteInSelected(false)],
+                [46, () => addOrDelNoteInSelected(false)]
+            ].forEach(p => (e.keyCode === p[0] ? nodef(e, p[1]) : false)),
         false
-      );
+    );
 
-      ////////////////////////////////////////////////////////////////////////
-      // DOM mess ahead.
+    ////////////////////////////////////////////////////////////////////////
+    // DOM mess ahead.
 
-      const target = document.getElementById(id);
-      const grid = cr("div", "grid");
-      const tbody = cr("tbody");
-      const octaveLabel = cr("div", "octave-label", "oct: " + selectedOctave);
-      const patternLabel = cr("span", "pattern-label", "Pattern 1");
-      const songGridBody = cr("tr");
-      const rightPanel = cr("div", "right");
-      const trackSelection = cr("div", "track-selection");
+    const target = document.getElementById(id);
+    const grid = cr("div", "grid");
+    const tbody = cr("tbody");
+    const octaveLabel = cr("div", "octave-label", "oct: " + selectedOctave);
+    const patternLabel = cr("span", "pattern-label", "Pattern 1");
+    const songGridBody = cr("tr");
+    const rightPanel = cr("div", "right");
+    const trackSelection = cr("div", "track-selection");
 
-      const playButton = crf(
+    const playButton = crf(
         "button",
         "Play",
         {
-          click: togglePlay,
+            click: togglePlay
         },
         "play-button"
-      );
+    );
 
-      ap(
+    ap(
         target,
         ap(
-          cr("div", "left"),
-          ap(cr("div", "grid-footer"), cr("div", "help-text", helpText)),
-          crf("button", "test", {
-            click: () => {
-              const t = toCompressedStr();
-              console.log(t);
-              console.log(fromCompressedStr(t));
-            },
-          })
+            cr("div", "left"),
+            ap(cr("div", "grid-footer"), cr("div", "help-text", helpText)),
+            crf("button", "test", {
+                click: () => {
+                    const t = toCompressedStr();
+                    console.log(t);
+                    console.log(fromCompressedStr(t));
+                }
+            })
         ),
         ap(
-          rightPanel,
-          ap(cr("div", "grid-header"), cr("h2", "", "Hightrack")),
-          ap(
-            cr("div", "grid-header"),
+            rightPanel,
+            ap(cr("div", "grid-header"), cr("h2", "", "Hightrack")),
             ap(
-              cr("div", "play-controls"),
-              playButton,
-              crf("button", "Rewind", {
-                click: rewind,
-              })
-            )
-          ),
-
-          trackSelection,
-          ap(grid, ap(cr("table"), tbody)),
-          ap(
-            cr("div", "grid-footer"),
-
-            ap(
-              cr("div", "pattern-controls"),
-              crf(
-                "button",
-                "<",
-                {
-                  click: () => selectPattern(selectedPattern - 1),
-                },
-                "prev-pattern"
-              ),
-              patternLabel,
-              crf(
-                "button",
-                ">",
-                {
-                  click: () => selectPattern(selectedPattern + 1),
-                },
-                "next-pattern"
-              )
+                cr("div", "grid-header"),
+                ap(
+                    cr("div", "play-controls"),
+                    playButton,
+                    crf("button", "Rewind", {
+                        click: rewind
+                    })
+                )
             ),
 
+            trackSelection,
+            ap(grid, ap(cr("table"), tbody)),
             ap(
-              cr("div", "options"),
-              propPair("bpm", "BPM"),
-              propPair("stepJumps", "Steps to jump when auto stepping"),
-              propPair("follow", "Follow", "checkbox"),
-              propPair("autoStep", "Auto step after add", "checkbox"),
-              propPair("notePreview", "Preview new notes", "checkbox"),
-              propPair("aSustain", "Sustain successive notes", "checkbox"),
-              propPair("inSongMode", "Song mode", "checkbox"),
+                cr("div", "grid-footer"),
 
-              octaveLabel
+                ap(
+                    cr("div", "pattern-controls"),
+                    crf(
+                        "button",
+                        "<",
+                        {
+                            click: () => selectPattern(selectedPattern - 1)
+                        },
+                        "prev-pattern"
+                    ),
+                    patternLabel,
+                    crf(
+                        "button",
+                        ">",
+                        {
+                            click: () => selectPattern(selectedPattern + 1)
+                        },
+                        "next-pattern"
+                    )
+                ),
+
+                ap(
+                    cr("div", "options"),
+                    propPair("bpm", "BPM"),
+                    propPair("stepJumps", "Steps to jump when auto stepping"),
+                    propPair("follow", "Follow", "checkbox"),
+                    propPair("autoStep", "Auto step after add", "checkbox"),
+                    propPair("notePreview", "Preview new notes", "checkbox"),
+                    propPair("aSustain", "Sustain successive notes", "checkbox"),
+                    propPair("inSongMode", "Song mode", "checkbox"),
+
+                    octaveLabel
+                )
+            ),
+            ap(
+                cr("div", "grid-footer"),
+                cr("h3", "", "Song Pattern Chain"),
+                ap(cr("table"), songGridBody)
             )
-          ),
-          ap(
-            cr("div", "grid-footer"),
-            cr("h3", "", "Song Pattern Chain"),
-            ap(cr("table"), songGridBody)
-          )
         )
-      );
+    );
 
-      //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
 
-      init();
-      process();
+    init();
+    process();
 
-      // Public API
-      return {
+    // Public API
+    return {
         togglePlay,
         select,
         selectPattern,
         selectOctave,
         addOrDelNoteInSelected,
         toCompressedStr,
-        fromCompressedStr,
-      };
+        fromCompressedStr
     };
+};
 
-    Tracker('tracker', {
-      tracks: defTracks,
-      onTrackSelection: (track) => {
+Tracker('tracker', {
+    tracks: defTracks,
+    onTrackSelection: track => {
         console.log('selecting track', track);
         if (synths && synths[0]) {
-          synths[0].activateTrack(track);
+            synths[0].activateTrack(track);
         }
-      },
-      onNote: (track, freq, dur) => {
+    },
+    onNote: (track, freq, dur) => {
         if (synths.length) {
-            synths[0].playOnTrack(track, freq, dur); 
+            synths[0].playOnTrack(track, freq, dur);
         }
-      }
-    });
-  
+    }
+});
