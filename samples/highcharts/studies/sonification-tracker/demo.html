@@ -4,20 +4,18 @@
 
 <main>
 
-    <div id="tracker" class="tracker"></div>
-    <div class="patch-panel">
-
-  <h1>Synth Patch Editor</h1>
-  <div class="row firstrow">
-    <p id="intro">Play the synth using the <span class="code">A</span> to <span class="code">L</span> and <span class="code">W</span> to <span class="code">O</span> keys on your keyboard, simulating white and black keys on a piano.</p>
-    <p id="keyStatus">Synth not started</p>
-  </div>
-
+  <h1>Highcharts Synth</h1>
   <button id="startSynth">Start synth</button>
 
   <div id="controls" class="hidden">
+    <div id="tracker" class="tracker"></div>
+    <div class="synth-editor">
+      <h1>Edit Synth Sound</h1>
+
+      <button id="showHelp">Help</button>
+
       <div id="help" class="hidden">
-        <h2>Help</h2>
+        <h2>Edit Synth Sound Help</h2>
         <p>Note: The synth can overdrive if you set volume too high or add many oscillators to play at once without lowering their volumes.</p>
         <p>To create volume envelopes, click in the charts to add points. The points can be dragged, or clicked to delete. The master envelopes run in addition to the oscillator envelopes if defined.</p>
         <p>The pulse width parameter only applies to oscillators with waveform type "pulse".</p>
@@ -25,12 +23,12 @@
         <p>The tracking multiplier parameters are used for frequency dependent behavior. For example, by setting the volume tracking multiplier to 0.01, the volume will be lower at higher notes. The multiplier is a logarithmic function, where 1 is at ca 50Hz, and you define the output for an input frequency around 3.2kHz.</p>
         <p>The FM and VM oscillator parameters are used for frequency modulation (FM) and volume modulation (VM). Set this parameter to one of the other oscillators to modulate its frequency or volume. Note: With pulse waveforms, the FM parameter actually controls PWM (pulse width modulation) instead of FM.</p>
       </div>
-
-      <button id="showHelp">Help</button>
+      
+      <p class="curSynth">Editing synth sound for track <span id="selectedSynth">1</span></p>
 
       <div id="synthContainer">
         <div class="row">
-          <label class="presetLabel">Preset <select class="preset"></select></label>
+          <label class="presetLabel">Apply preset <select class="preset"></select></label>
           <button class="playWideRange">Play wide range</button>
         </div>
 
@@ -67,8 +65,9 @@
         <h2>Generated Patch JSON</h2>
         <textarea readonly class="json">{}</textarea>
       </div>
-  </div>
     </div>
+  </div>
+  </div>
 </main>
 
 

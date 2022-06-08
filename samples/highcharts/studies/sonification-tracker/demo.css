@@ -1,7 +1,45 @@
+h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
 h2 {
   font-size: 1.3rem;
   font-weight: normal;
   margin-top: 30px;
+}
+
+#controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.synth-editor {
+  flex: 1;
+  overflow: scroll;
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  font-family: monospace;
+}
+
+.synth-editor h1 {
+  float: left;
+  margin-right: 20px;
+}
+
+.synth-editor .curSynth {
+  font-size: 1.2rem;
+  background-color: #117711;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#selectedSynth {
+  font-weight: bold;
 }
 
 .code {
@@ -17,10 +55,10 @@ h2 {
 #help {
   font-size: 0.8rem;
   padding: 20px 40px;
-  max-width: 895px;
+  width: 100%;
   margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #f8f8f8;
+  background-color: #444;
+  box-sizing: border-box;
 }
 
 #help h2 {
@@ -35,7 +73,6 @@ h2 {
 }
 
 #showHelp {
-  margin-bottom: 20px;
   padding: 5px 20px;
 }
 
@@ -46,6 +83,7 @@ h2 {
   padding: 10px;
   height: 200px;
   width: 100%;
+  box-sizing: border-box;
   overflow-y: scroll;
   resize: none;
 }
@@ -68,33 +106,23 @@ h2 {
   margin: 0;
 }
 
-#intro {
-  font-size: 1.1rem;
-  padding: 20px;
-  background-color: #e1f6fe;
-}
-
-#keyStatus {
-  background-color: #f3f2fc;
-  padding: 20px;
-  text-align: center;
-  flex: 1;
-}
-
 .chart {
   height: 200px;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .globalControls {
   display: inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: scroll;
   align-items: flex-start;
   margin-top: 30px;
-  background-color: #fcfcfc;
-  border: 1px solid #f0f0f0;
+  background-color: #555;
+  border: 1px solid #999;
   padding: 20px;
 }
 
@@ -130,16 +158,17 @@ button {
   cursor: pointer;
   padding: 2px 16px;
   border-radius: 3px;
-  border: 1px solid #aaa;
-  background-color: #fafafa;
+  border: 1px solid #888;
+  background-color: #666;
+  color: #fff;
 }
 
 button:hover {
-  background-color: #efefef;
+  background-color: #555;
 }
 
 button:active {
-  background-color: #e0e0e0;
+  background-color: #111;
 }
 
 .masterVolume {
@@ -189,6 +218,7 @@ button:active {
   margin-top: 10px;
   background-color: #d5f3d5;
   border: 1px solid #616161;
+  color: #222;
 }
 
 .addOsc:hover {
@@ -205,7 +235,7 @@ button:active {
 }
 
 .oscillator {
-  background-color: #fafafa;
+  background-color: #555;
   border: 1px solid #d7d7d7;
   padding: 15px;
   border-radius: 4px;
@@ -252,16 +282,12 @@ button:active {
   height: 1.2rem;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+/* ////////////////////////////////////////////////////////////////////////////// */
 
 html,
 body {
   width: 100%;
   height: 100%;
-}
-
-.patch-panel {
-
 }
 
 .tracker {
@@ -272,7 +298,7 @@ body {
   -ms-user-select: none;
   user-select: none;
   height: 1050px;
-  width: 280px;
+  width: 580px;
 }
 
 .tracker .track-selection {
@@ -389,9 +415,6 @@ body {
   background: #333;
 }
 
-.tracker .step-row {
-}
-
 .tracker .pattern-label {
   padding-left: 5px;
   padding-right: 5px;
@@ -413,11 +436,6 @@ body {
   text-align: center;
   font-weight: bold;
   box-sizing: border-box;
-}
-
-.tracker .step:hover {
-  //border: 1px solid #999 !important;
-  //padding: 0px !important;
 }
 
 .tracker .step-active {

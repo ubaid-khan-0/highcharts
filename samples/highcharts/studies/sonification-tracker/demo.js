@@ -124,6 +124,11 @@ function createEnvelopeChart(type, containerEl, onEdit) {
             endOnTick: false,
             title: {
                 enabled: false
+            },
+            labels: {
+                style: {
+                    color: '#ddd'
+                }
             }
         },
         xAxis: {
@@ -134,7 +139,12 @@ function createEnvelopeChart(type, containerEl, onEdit) {
             tickAmount: 3,
             minRange: 0,
             startOnTick: false,
-            endOnTick: false
+            endOnTick: false,
+            labels: {
+                style: {
+                    color: '#ddd'
+                }
+            }
         },
         series: [{
             cursor: 'pointer',
@@ -571,7 +581,6 @@ el('startSynth').onclick = function () {
 
     el('controls').classList.remove('hidden');
     this.classList.add('hidden');
-    el('keyStatus').textContent = 'No synth key pressed';
     setTimeout(playJingle, 50);
 };
 
@@ -1385,6 +1394,7 @@ Tracker('tracker', {
         if (synthEditor) {
             synthEditor.setActiveSynth(track);
         }
+        el('selectedSynth').textContent = track + 1;
     },
     onNote: (track, freq, dur) => {
         if (synths.length) {
