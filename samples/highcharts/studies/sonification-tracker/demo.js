@@ -248,7 +248,7 @@ function addOscControls(controlsContainerEl, options) {
 
 class SynthEditor {
 
-    constructor(htmlContainerEl) {
+    constructor(htmlContainerEl, initialOptions) {
         const synthEditor = this;
         this.container = htmlContainerEl;
         this.oscIdCounter = 1;
@@ -277,7 +277,9 @@ class SynthEditor {
             )
         };
         this.populateEQSliders();
-        setTimeout(() => this.applyOptions(JSON.parse(presets.basic)), 0);
+        setTimeout(() => this.applyOptions(
+            initialOptions || JSON.parse(presets.basic)
+        ), 0);
     }
 
     addOscillator(options) {
@@ -370,7 +372,9 @@ class SynthEditor {
         // Reset first
         let i = this.oscillators.length;
         while (i--) {
-            this.oscillators[i].remove();
+            if (this.oscillators[i]) {
+                this.oscillators[i].remove();
+            }
         }
         this.oscIdCounter = 1;
 
@@ -379,11 +383,11 @@ class SynthEditor {
         envToChart('masterAttackEnvChart', options.masterAttackEnvelope);
         envToChart('masterReleaseEnvChart', options.masterReleaseEnvelope);
         this.applyEqToUI(options.eq || []);
-        options.oscillators.forEach(this.addOscillator.bind(this));
+        (options.oscillators || []).forEach(this.addOscillator.bind(this));
 
         setTimeout(() => { // Settimeout to allow charts etc to build
             const opts = options.oscillators;
-            this.oscillators.forEach((osc, i) => {
+            (this.oscillators || []).forEach((osc, i) => {
                 el(osc.controlIds.type).value = opts[i].type;
                 el(osc.controlIds.fmOsc).value =
                     opts[i].fmOscillator !== null ? opts[i].fmOscillator + 1 : '';
@@ -538,6 +542,8 @@ class SynthEditor {
         if (audioContext) {
             synths[asix] = newSynth(audioContext, options);
         }
+
+        saveData();
     }
 
 
@@ -565,28 +571,6 @@ class SynthEditor {
         this.updateFromUI();
     }
 }
-
-
-// Use synth --------------------------------------------------------------------------------------------
-
-el('startSynth').onclick = function () {
-    audioContext = new AudioContext();
-
-    const basic = JSON.parse(presets.basic);
-    for (let i = 0; i < defTracks; ++i) {
-        synths.push(newSynth(audioContext, basic));
-    }
-
-    synthEditor = new SynthEditor(el('synthContainer'));
-
-    el('controls').classList.remove('hidden');
-    this.classList.add('hidden');
-    setTimeout(playJingle, 50);
-};
-
-
-document.querySelectorAll('.json').forEach(el => (el.onclick = () => el.select()));
-el('showHelp').onclick = () => el('help').classList.toggle('hidden');
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -979,6 +963,8 @@ const Tracker = (id, options) => {
                     }
                 }
             }
+
+            saveData();
         }
     };
 
@@ -1388,7 +1374,7 @@ const Tracker = (id, options) => {
     };
 };
 
-Tracker('tracker', {
+const tracker = Tracker('tracker', {
     tracks: defTracks,
     onTrackSelection: track => {
         if (synthEditor) {
@@ -1402,3 +1388,50 @@ Tracker('tracker', {
         }
     }
 });
+
+
+function saveData() {
+    const json = JSON.stringify({
+        synthOptions: synths.map(s => s.options),
+        tracker: tracker.toCompressedStr()
+    });
+    window.localStorage.setItem('sonification-tracker', json);
+    window.location.hash = btoa(json);
+}
+
+
+// Use synth --------------------------------------------------------------------------------------------
+
+el('startSynth').onclick = function () {
+    const hashData = window.location.hash.slice(1),
+        decodedHashData = hashData && atob(hashData);
+
+    const savedData = JSON.parse(
+        decodedHashData ||
+        window.localStorage.getItem('sonification-tracker') || '{}'
+    );
+
+    if (savedData.tracker) {
+        tracker.fromCompressedStr(savedData.tracker);
+    }
+
+    audioContext = new AudioContext();
+
+    const basic = JSON.parse(presets.basic);
+    for (let i = 0; i < defTracks; ++i) {
+        synths.push(newSynth(
+            audioContext,
+            savedData.synthOptions && savedData.synthOptions[i] || basic
+        ));
+    }
+
+    synthEditor = new SynthEditor(el('synthContainer'), synths[0].options);
+
+    el('controls').classList.remove('hidden');
+    this.classList.add('hidden');
+    setTimeout(playJingle, 50);
+};
+
+
+document.querySelectorAll('.json').forEach(el => (el.onclick = () => el.select()));
+el('showHelp').onclick = () => el('help').classList.toggle('hidden');
