@@ -1398,14 +1398,14 @@ function saveData() {
         tracker: tracker.toCompressedStr()
     });
     window.localStorage.setItem('sonification-tracker', json);
-    el('projectData').textContent = btoa(json);
+    el('projectData').value = btoa(json);
 }
 
 
 // Use synth --------------------------------------------------------------------------------------------
 
 el('startSynth').onclick = function () {
-    const dataOnLoad = el('projectInput').textContent;
+    const dataOnLoad = el('projectInput').value;
     let decodedData;
     try {
         decodedData = atob(dataOnLoad);
