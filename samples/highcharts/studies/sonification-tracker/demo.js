@@ -1406,8 +1406,12 @@ function saveData() {
 
 el('startSynth').onclick = function () {
     const urlSegments = window.location.hash.split('#'),
-        hashData = urlSegments[urlSegments.length - 1],
+        hashData = urlSegments[urlSegments.length - 1];
+    let decodedHashData;
+    try {
         decodedHashData = hashData && atob(hashData);
+    // eslint-disable-next-line no-unused-vars
+    } catch (e) { /* ignore */ }
 
     const savedData = JSON.parse(
         decodedHashData ||
