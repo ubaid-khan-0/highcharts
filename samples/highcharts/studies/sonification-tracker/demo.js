@@ -1405,7 +1405,8 @@ function saveData() {
 // Use synth --------------------------------------------------------------------------------------------
 
 el('startSynth').onclick = function () {
-    const hashData = window.location.hash.slice(1),
+    const urlSegments = window.location.hash.split('#'),
+        hashData = urlSegments[urlSegments.length - 1],
         decodedHashData = hashData && atob(hashData);
 
     const savedData = JSON.parse(
