@@ -256,7 +256,7 @@ class SynthEditor {
         this.activeSynthIx = 0;
 
         // TODO: HTML should probably be generated.
-        this.child('.playWideRange').onclick = playWideRange;
+        this.child('.playWideRange').onclick = () => playWideRange(synths[this.activeSynthIx]);
         this.child('.addOsc').onclick = this.addOscillator.bind(this);
         this.child('.resetEQ').onclick = this.resetEQ.bind(this);
         this.child('.masterVolume').onchange = this.child('.glideDuration').onchange =
@@ -520,6 +520,7 @@ class SynthEditor {
 
     resetEQ() {
         this.container.querySelectorAll('.eqSliders .gain').forEach(input => (input.value = 0));
+        this.container.querySelectorAll('.eqSliders .q').forEach(input => (input.value = 1));
         this.updateFromUI();
     }
 
@@ -1055,6 +1056,7 @@ const Tracker = (id, options) => {
             lastStepTime = 0;
             playButton.innerHTML = "Stop";
         } else {
+            synths.forEach(s => s.silenceAtTime(0));
             playButton.innerHTML = "Play";
         }
     };
