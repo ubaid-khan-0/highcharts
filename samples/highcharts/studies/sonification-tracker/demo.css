@@ -52,6 +52,10 @@ h2 {
   height: 2.5rem;
 }
 
+#projectInput {
+  
+}
+
 #help {
   font-size: 0.8rem;
   padding: 20px 40px;
@@ -76,7 +80,7 @@ h2 {
   padding: 5px 20px;
 }
 
-.json {
+textarea.code {
   font-family: monospace;
   background-color: #444;
   color: #d6eed6;
@@ -86,6 +90,7 @@ h2 {
   box-sizing: border-box;
   overflow-y: scroll;
   resize: none;
+  margin-bottom: 20px;
 }
 
 .row {

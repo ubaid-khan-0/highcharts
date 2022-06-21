@@ -534,7 +534,7 @@ class SynthEditor {
     updateFromUI() {
         const options = this.getPatchOptionsFromUI(),
             asix = this.activeSynthIx;
-        this.child('.json').textContent = JSON.stringify(options, null, ' ');
+        this.child('.code').textContent = JSON.stringify(options, null, ' ');
 
         if (synths[asix]) {
             synths[asix].stop();
@@ -1398,23 +1398,22 @@ function saveData() {
         tracker: tracker.toCompressedStr()
     });
     window.localStorage.setItem('sonification-tracker', json);
-    window.location.hash = btoa(json);
+    el('projectData').textContent = btoa(json);
 }
 
 
 // Use synth --------------------------------------------------------------------------------------------
 
 el('startSynth').onclick = function () {
-    const urlSegments = window.location.hash.split('#'),
-        hashData = urlSegments[urlSegments.length - 1];
-    let decodedHashData;
+    const dataOnLoad = el('projectInput').textContent;
+    let decodedData;
     try {
-        decodedHashData = hashData && atob(hashData);
+        decodedData = atob(dataOnLoad);
     // eslint-disable-next-line no-unused-vars
     } catch (e) { /* ignore */ }
 
     const savedData = JSON.parse(
-        decodedHashData ||
+        decodedData ||
         window.localStorage.getItem('sonification-tracker') || '{}'
     );
 
@@ -1435,6 +1434,7 @@ el('startSynth').onclick = function () {
     synthEditor = new SynthEditor(el('synthContainer'), synths[0].options);
 
     el('controls').classList.remove('hidden');
+    el('projectLoad').classList.add('hidden');
     this.classList.add('hidden');
     setTimeout(playJingle, 50);
 };

@@ -5,6 +5,10 @@
 <main>
 
   <h1>Highcharts Synth</h1>
+  <label id="projectLoad">
+    Load project data on start:
+    <textarea class="code" id="projectInput"></textarea>
+  </label>
   <button id="startSynth">Start synth</button>
 
   <div id="controls" class="hidden">
@@ -63,7 +67,10 @@
         </div>
   
         <h2>Generated Patch JSON</h2>
-        <textarea readonly class="json">{}</textarea>
+        <textarea readonly class="code">{}</textarea>
+
+        <h2>Project data</h2>   
+        <textarea readonly class="code" id="projectData"></textarea>
       </div>
     </div>
   </div>
