@@ -23,7 +23,7 @@ import type Options from '../../Core/Options';
 import type DataGrid from '../../DataGrid/DataGrid';
 import type DataTable from '../../Data/DataTable';
 
-import Component from '../../Dashboard/Component/Component.js';
+import Component from '../../Dashboards/Component/Component.js';
 import DataConverter from '../../Data/Converters/DataConverter.js';
 import DataStore from '../../Data/Stores/DataStore.js';
 import DataGridSyncHandlers from './DataGridSyncHandlers.js';
@@ -37,7 +37,7 @@ const { createElement, merge, uniqueKey } = U;
  * */
 
 /**
- * DataGrid component for the Highsoft Dashboard.
+ * DataGrid component for the Highcharts Dashboards.
  * @private
  * @class
  * @name Highcharts.DashboardComponent
@@ -207,10 +207,14 @@ class DataGridComponent extends Component<DataGridComponent.ChartComponentEvents
                     cells.forEach((cell: HTMLElement): void => {
                         if (cell.childElementCount > 0) {
                             const input =
-                                cell.childNodes[0] as HTMLInputElement;
+                                cell.childNodes[0] as HTMLInputElement,
+                                convertedInputValue =
+                                    typeof e.cellValue === 'string' ?
+                                        input.value :
+                                        +input.value;
 
                             if (cell.dataset.columnName === e.columnName &&
-                                +input.value === e.cellValue
+                                convertedInputValue === e.cellValue
                             ) {
                                 shouldUpdateTheGrid = false;
                             }
