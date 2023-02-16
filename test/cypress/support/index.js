@@ -14,12 +14,12 @@ Cypress.Commands.add('pan', chartElement => {
         .trigger('mouseup')
 })
 
-Cypress.Commands.add('dashboard', () =>
+Cypress.Commands.add('board', () =>
     cy.window().then(win => new Cypress.Promise((resolve, reject) => {
         const D = win.Dashboards;
         if (D) {
-            if (D.dashboards[0]) {
-                 resolve(D.dashboards[0]);
+            if (D.boards[0]) {
+                 resolve(D.boards[0]);
             } else {
                 const unbind = D.addEvent(D.Dashboards, 'load', function() {
                     unbind();
@@ -30,6 +30,10 @@ Cypress.Commands.add('dashboard', () =>
             reject(new Error('global Dashboards namespace is missing.'));
         }
     }))
+);
+
+Cypress.Commands.add('hideSidebar', () =>
+    cy.get('.hd-edit-sidebar-button-nav.hd-edit-close-btn').click()
 );
 
 Cypress.Commands.add('chart', () =>

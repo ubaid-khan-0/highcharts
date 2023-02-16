@@ -3,10 +3,10 @@ Your first dashboard
 
 If you are ready to create your first simple dashboard please follow the steps:
 
-1. Add a div to your webpage with a specific id. Additionally, if you are planning to use the Edit Mode, please add the class `highcharts-dashboards` to that div (more on that in a dedicated chapter).
+1. Add a div to your webpage with a specific id.
 
     ```html
-        <div id="container" class="highcharts-dashboards">
+        <div id="container">
     ```
 
 2. In this basic example we are going to create a dashboard with two cells. One will contain a static HTML and the other will contain a chart created with the Highcharts.
@@ -29,9 +29,15 @@ Thus we have to import the main dashboard package, the Highcharts library and a 
     * the div’s id where the dashboard should be placed (see point 1).
     * the object with dashboard options.
 
+    To do so, you can use factory function `Dashboards.board`:
 
     ```js
-        const dashboard = new Dashboard.Dashboard('container', {...})
+        Dashboards.board('container', {...})
+    ```
+    or the class `Dashboards.Board` to create a new instance of the dashboard:
+
+    ```js
+        const board = new Dashboards.Board('container', {...})
     ```
 
 5.  As options, you have to provide two essential things:

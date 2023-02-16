@@ -25,7 +25,7 @@
  * */
 
 import type GUIElement from './Layout/GUIElement';
-import type Dashboard from './Dashboard';
+import type Board from './Board';
 
 /* *
  *
@@ -59,7 +59,8 @@ namespace Globals {
         cellHover: classNamePrefix + 'cell-state-hover',
         cellActive: classNamePrefix + 'cell-state-active',
         row: classNamePrefix + 'row',
-        layoutsWrapper: classNamePrefix + 'layouts-wrapper'
+        layoutsWrapper: classNamePrefix + 'layouts-wrapper',
+        boardContainer: classNamePrefix + 'dashboards-wrapper'
     };
 
     export const guiElementType: Record<string, GUIElement.GUIElementType> = {
@@ -74,7 +75,7 @@ namespace Globals {
         large: 'large'
     };
 
-    export const dashboards: Array<Dashboard|undefined> = [];
+    export const boards: Array<Board|undefined> = [];
 
     export const win = window;
 

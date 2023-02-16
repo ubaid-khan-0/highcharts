@@ -14,8 +14,9 @@
  *
  * */
 
-import Dashboard from '../Dashboard.js';
+import Board from '../Board.js';
 import U from '../../Core/Utilities.js';
+import Globals from '../Globals.js';
 
 const { addEvent } = U;
 
@@ -26,10 +27,14 @@ class Fullscreen {
     *  Constructor
     *
     * */
-
-    constructor(DashboardClass: Dashboard) {
+    constructor(DashboardClass: Board) {
         this.isOpen = false;
-        this.dashboard = DashboardClass;
+        this.board = DashboardClass;
+
+        // add class to allow scroll element
+        this.board.boardWrapper.classList.add(
+            Globals.classNamePrefix + '-dashboards-fullscreen'
+        );
     }
 
     /* *
@@ -38,7 +43,7 @@ class Fullscreen {
     *
     * */
 
-    public dashboard: Dashboard;
+    public board: Board;
     public isOpen: boolean;
     private unbindFullscreenEvent?: Function;
 
@@ -50,7 +55,7 @@ class Fullscreen {
     * */
 
     /**
-     * Toggles displaying the dashboard in fullscreen mode.
+     * Toggles displaying the board in fullscreen mode.
      */
     public toggle(): void {
         const fullscreen = this,
@@ -60,18 +65,18 @@ class Fullscreen {
     }
 
     /**
-     * Display dashboard in fullscreen.
+     * Display board in fullscreen.
      */
     public open(): void {
         if (this.isOpen) {
             return;
         }
         const fullscreen = this,
-            dashboard = fullscreen.dashboard;
+            board = fullscreen.board;
 
         // Handle exitFullscreen() method when user clicks 'Escape' button.
         const unbindChange = addEvent(
-            dashboard.container.ownerDocument, // dashboard's document
+            board.boardWrapper.ownerDocument, // dashboard's document
             'fullscreenchange',
             function (): void {
                 if (fullscreen.isOpen) {
@@ -88,7 +93,7 @@ class Fullscreen {
             unbindChange();
         };
 
-        const promise = dashboard.container.requestFullscreen();
+        const promise = board.boardWrapper.requestFullscreen();
 
         // eslint-disable-next-line highcharts/quote-members
         promise.catch((): void => {
@@ -101,14 +106,14 @@ class Fullscreen {
      */
     public close(): void {
         const fullscreen = this,
-            dashboard = fullscreen.dashboard;
+            board = fullscreen.board;
 
         // Don't fire exitFullscreen() when user exited using 'Escape' button.
         if (
             fullscreen.isOpen &&
-            dashboard.container.ownerDocument instanceof Document
+            board.boardWrapper.ownerDocument instanceof Document
         ) {
-            void dashboard.container.ownerDocument.exitFullscreen();
+            void board.boardWrapper.ownerDocument.exitFullscreen();
         }
 
         // Unbind event as it's necessary only before exiting from fullscreen.
@@ -125,7 +130,7 @@ class Fullscreen {
      * Set the correct text depending of the fullscreen is on or of.
      */
     public setButtonText(): void {
-        const editMode = this.dashboard.editMode,
+        const editMode = this.board.editMode,
             contextMenu = editMode && editMode.tools.contextMenu,
             button = contextMenu && contextMenu.items.viewFullscreen;
 

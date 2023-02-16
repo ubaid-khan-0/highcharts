@@ -14,7 +14,6 @@
  *
  * */
 
-/* eslint-disable require-jsdoc */
 import Component from './Component.js';
 import U from '../../Core/Utilities.js';
 const {
@@ -39,6 +38,7 @@ class EditableOptions {
         keyMap: {
             color: 'colorPicker',
             chartOptions: 'textarea',
+            chartType: 'select',
             title: 'text',
             caption: 'text',
             style: 'textarea'

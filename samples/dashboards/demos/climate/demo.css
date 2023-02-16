@@ -6,6 +6,16 @@
  *
  * */
 
+.hd-dashboards-wrapper {
+    --button-filter: none;
+    --color-background: none;
+}
+
+.hd-dashboards-wrapper.hd-dark-mode {
+    --button-filter: invert(1);
+    --color-background: #46475d;
+}
+
 #city-chart {
     --color-axis: #f7f7f7;
     --color-axis-labels: #e7e7ec;
@@ -26,7 +36,7 @@
     --color-text: #2f2b38;
 }
 
-.highcharts-dashboards.hd-dark-mode #kpi-layout {
+.hd-dashboards-wrapper.hd-dark-mode #kpi-layout {
     --color-axis-labels: #838394;
     --color-background: #0d0d0d;
     --color-pane: #20202c;
@@ -52,7 +62,7 @@
     --color-row2-background: #f7f7f7;
 }
 
-.highcharts-dashboards.hd-dark-mode #selection-grid {
+.hd-dashboards-wrapper.hd-dark-mode #selection-grid {
     --color-background: #20202c;
     --color-border: #4a4a53;
     --color-header-background: #0d0d0d;
@@ -78,7 +88,7 @@
     --color-thumb-line: #f7f7f7;
 }
 
-.highcharts-dashboards.hd-dark-mode #time-range-selector {
+.hd-dashboards-wrapper.hd-dark-mode #time-range-selector {
     --color-axis-labels: #e7e7ec;
     --color-background: #0d0d0d;
     --color-grid: #838394;
@@ -106,7 +116,7 @@
     --color-tooltip-background: #dadae2;
 }
 
-.highcharts-dashboards.hd-dark-mode #world-map {
+.hd-dashboards-wrapper.hd-dark-mode #world-map {
     --color-navigation: #20202b;
     --color-navigation-line: #646478;
     --color-navigation-text: #838393;
@@ -115,8 +125,9 @@
 @media (prefers-color-scheme: dark) {
     /* dark mode */
 
-    .highcharts-dashboards {
-        --color-dashboard: #46475d;
+    .hd-dashboards-wrapper {
+        --button-filter: invert(1);
+        --color-background: #46475d;
     }
 
     #kpi-layout {
@@ -165,12 +176,12 @@
  *
  * */
 
-.highcharts-dashboards.hd-dark-mode {
-    background-color: #46475d;
+div.hd-dashboards-wrapper {
+    background-color: var(--color-background);
 }
 
-.highcharts-dashboards.hd-dark-mode .hd-edit-context-menu-btn {
-    filter: invert(1);
+div.hd-dashboards-wrapper .hd-edit-context-menu-btn {
+    filter: var(--button-filter);
 }
 
 /* *
@@ -253,6 +264,10 @@
 
 #kpi-layout .hd-component-kpi-chart-container .highcharts-label {
     font-size: 32px;
+}
+
+.hd-component-kpi-chart-container {
+    max-width: 100%;
 }
 
 #kpi-layout .hd-component-kpi-chart-container .highcharts-pane {
@@ -554,7 +569,7 @@
 }
 
 /* Safari fix for manual dark mode */
-.highcharts-dashboards.hd-dark-mode #world-map .highcharts-series-1 .highcharts-data-label text {
+.hd-dashboards-wrapper.hd-dark-mode #world-map .highcharts-series-1 .highcharts-data-label text {
     paint-order: stroke;
     stroke-width: 2px;
 }
@@ -577,7 +592,7 @@
     color: #fff;
 }
 
-.hd-edit-enabled.highcharts-dashboards {
+.hd-edit-enabled.hd-dashboards-wrapper {
     background-color: rgba(36, 29, 58, 0.2);
 }
 
@@ -614,6 +629,6 @@
     background: #646479;
 }
 
-.highcharts-dashboards > .hd-edit-drop-pointer {
+.hd-dashboards-wrapper > .hd-edit-drop-pointer {
     background: #ff8d64;
 }

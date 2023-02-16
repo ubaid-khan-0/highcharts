@@ -85,6 +85,12 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
     public static defaultOptions = merge(
         Component.defaultOptions,
         {
+            /**
+             * Whether to allow the component to edit the store to which it is
+             * attached.
+             * @default true
+             */
+            allowStoreUpdate: true,
             chartClassName: 'chart-container',
             chartID: 'chart-' + uniqueKey(),
             chartOptions: {
@@ -94,7 +100,8 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
             editableOptions:
                   Component.defaultOptions.editableOptions.concat(
                       [
-                          'chartOptions'
+                          'chartOptions',
+                          'chartType'
                           // 'chartClassName',
                           // 'chartID'
                       ]
@@ -143,7 +150,6 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
     public chartContainer: HTMLElement;
     public options: HighchartsComponent.ComponentOptions;
     public chartConstructor: HighchartsComponent.ConstructorType;
-
     public sync: Component['sync'];
     /* *
      *
@@ -200,11 +206,11 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
             });
         }
 
-
         this.innerResizeTimeouts = [];
 
         // Add the component instance to the registry
         Component.addInstance(this);
+
     }
 
     /* *
@@ -226,14 +232,23 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
     }
 
     public render(): this {
-        this.emit({ type: 'beforeRender' });
-        super.render();
-        this.chart = this.initChart();
-        this.updateSeries();
-        this.sync.start();
-        this.emit({ type: 'afterRender' });
-        this.setupStoreUpdate();
+        const hcComponent = this;
 
+        hcComponent.emit({ type: 'beforeRender' });
+        super.render();
+        hcComponent.chart = hcComponent.initChart();
+        hcComponent.updateSeries();
+        hcComponent.sync.start();
+        hcComponent.emit({ type: 'afterRender' });
+        hcComponent.setupStoreUpdate();
+
+        addEvent(hcComponent.chart, 'afterUpdate', function ():void {
+            const options = this.options;
+
+            hcComponent.updateComponentOptions({
+                chartOptions: options
+            }, false);
+        });
         return this;
     }
 
@@ -266,7 +281,7 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
     private setupStoreUpdate(): void {
         const { store, chart } = this;
 
-        if (store && chart) {
+        if (store && chart && this.options.allowStoreUpdate) {
             chart.series.forEach((series): void => {
                 series.points.forEach((point): void => {
                     addEvent(point, 'drag', (): void => {
@@ -294,9 +309,26 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
 
         table.setCell(columnName, rowNumber, valueToSet);
     }
+    /**
+     * Handles updating via options
+     * @param {Partial<Component.ComponentOptions>} options
+     * The options to apply
+     *
+     * @param {boolean} redraw
+     * The flag triggers the main redraw operation
+     */
+    private updateComponentOptions(
+        options: Partial<HighchartsComponent.ComponentOptions>,
+        redraw = true
+    ): void {
+        super.update(options, redraw);
+    }
 
-    public update(options: Partial<HighchartsComponent.ComponentOptions>): this {
-        super.update(options);
+    public update(
+        options: Partial<HighchartsComponent.ComponentOptions>
+    ): this {
+        this.updateComponentOptions(options);
+
         if (this.chart) {
             this.chart.update(this.options.chartOptions || {});
         }
@@ -305,7 +337,7 @@ class HighchartsComponent extends Component<HighchartsComponent.ChartComponentEv
     }
 
     private updateSeries(): void {
-        // Heuristically create series from the store datatable
+        // Heuristically create series from the store dataTable
         if (this.chart && this.store) {
             this.presentationTable = this.presentationModifier ?
                 this.store.table.modified.clone() :
@@ -549,6 +581,7 @@ namespace HighchartsComponent {
     }>;
 
     export interface ComponentOptions extends Component.ComponentOptions, EditableOptions {
+        allowStoreUpdate?: boolean,
         chartConstructor: ConstructorType;
     }
 

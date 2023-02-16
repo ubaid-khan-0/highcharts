@@ -14,6 +14,8 @@
  *
  * */
 
+import type HighchartsComponent from '../../Extensions/DashboardPlugins/HighchartsComponent';
+
 import EditMode from './EditMode.js';
 import U from '../../Core/Utilities.js';
 import Cell from '../Layout/Cell.js';
@@ -27,6 +29,7 @@ import EditRenderer from './EditRenderer.js';
 import Bindings from '../Actions/Bindings.js';
 import GUIElement from '../Layout/GUIElement.js';
 import Layout from '../Layout/Layout.js';
+import DataTable from '../../Data/DataTable.js';
 
 const {
     merge,
@@ -103,13 +106,13 @@ class Sidebar {
                             (dropContext as Cell).row :
                             (dropContext as Row)
                     ),
-                    dashboard = row.layout.dashboard,
+                    board = row.layout.board,
                     newLayoutName = GUIElement.createElementId('layout'),
                     cellName = GUIElement.createElementId('cell'),
-                    layout = new Layout(dashboard, {
+                    layout = new Layout(board, {
                         id: newLayoutName,
                         copyId: '',
-                        parentContainerId: dashboard.container.id,
+                        parentContainerId: board.container.id,
                         rows: [{
                             cells: [{
                                 id: cellName
@@ -119,7 +122,7 @@ class Sidebar {
                     });
 
                 if (layout) {
-                    dashboard.layouts.push(layout);
+                    board.layouts.push(layout);
                 }
 
                 Bindings.addComponent({
@@ -163,71 +166,80 @@ class Sidebar {
             }
         }, {
             text: 'HTML',
-            onDrop: function (sidebar: Sidebar, dropContext: Cell|Row): void {
-                if (sidebar && dropContext) {
-                    sidebar.onDropNewComponent(dropContext, {
-                        cell: '',
-                        type: 'html',
-                        dimensions: {
-                            width: 200,
-                            height: 200
-                        },
-                        elements: [{
-                            tagName: 'img',
-                            attributes: {
-                                /* eslint-disable max-len */
-                                src: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABIFBMVEX//' +
-                                '/93dY2j7Llkmp+AhegwQ2uf67ZblZqBhOtlnKBjm5yAheql8Lt2c4wtPmh1b4t6f+d3dIhxb4h5fufw9Pj3/' +
-                                'fllmaF8iN53jNBYk5rz9P1nmKbP3OR5i9Vtk7jY9+G38Mitxc/O9dru+/Kr7r/F89Lk+et/g988Unc1SHBAW' +
-                                'XuYur5woqfS4eLZ3vO3y9fW1/jl7PGanu1+qLFwkb+rru+/wfObucSLj+puk7hzj8fv7/xqlbCjp+61uPHH1' +
-                                '9/IyvWGrLfn6PuGmqZ6ebig4biOraZ+gdJ6e6+Uvqx/hpab0LJ8f8Z5eaNmeqJejZpeYoFOcIpZgZRUeJNRW' +
-                                'n2vysyd17WJoaGCjpqgnrS1tceFr7ONjKXOztuVwq6wsMM1MXwqAAAGOElEQVR4nO2aeVcURxTF6WWmG2djF' +
-                                'yEJIw4oigZxCVFURInGJSiuaEy+/7dIVVd1d1V19TLhzOlHn/v7f87pe97td+9rmJoCAAAAAAAAAAAAAAAA' +
-                                'AAAAAAAAAAAAAAAAAAAAAAAAVLhV9wNMnIu/1v0EE2ZnfvV23c8wWXbD/Tt1P8NEOZwJ7waX636KSXJvJly+' +
-                                'cKnBPl0JO52LF7w7C3U/yMS4P+P7/pIX/Fb3g0yMvY7vh6ued+mnup9kQuzMsxGGv1/wvKWG+nS3wxU+YAqD' +
-                                'p3U/y0Q45CP0Oz8zhd6lJ3U/zSR4NBMpvDjNFHpLDYyMhx1uUsYqVxg0sNpEUcFfxP1oiEHzKrgvRxje5S8' +
-                                'ik9g0nx7M+1LhslDoNc2nu3KEPu9tYojNqja35FvIJUqFXtCoavOokygMV6XCRlWbh+kI/fCXZIgN8uljVeG' +
-                                'DWKEXNKbaLPipSWVva5hPD5QRsmWaCGxOBd9TRhj3NimRXrXZWFsc+zc785pA2dukT8lVm7W2O1y7Mt5vHuk' +
-                                'jjHsb0Wqz6Lrtdnu4PobIwxlfV7isKqT3dXHYdscU+dhQmPQ2Abmvi5tcoRA5qiRyxddN6vtXl1SF3tLEn3k' +
-                                '8Ft0UJnJjs+wHB/OGQKW30aw2G213LJF75giV3iZ9SqyCb2oKI5HuxmZuhuzMmALV3kaz2ozcDAUid8OMQrW' +
-                                '3kfTphjnEWOTQ0gbMqIgUXvUMiH1dzNi0SOQ9i0Ktt5H0qcWmqci2VnlWOpk94xu9TUCrgq/nDTGZZBKU960' +
-                                'j1HubeBVJVfArhQpdtQ1koyJSuJxRSKzaDMskRipH65s781aFRm8TkKrgaxUUcpHdZ89f+LY3sZMVSCsyrlQ' +
-                                'S6LpHg9nZwfMXnY6pMswsU49YtaliU9ft/jFwHGd2tvfSnGT0d9IMlCKjmk1HjoRNkokMU5WZ3kbOp4vl8tg' +
-                                'I/xw4TirSefniamxX66qhVW2q2LT7queoMLu+feNHItXvbUR9mtvcFIGvB06G2dm3b6JJ2lYNra+LFUb4xaK' +
-                                'Qi3SYyHDfalNK1cZ+YKgCjwY9q0Ixyb+OlzLdNPIpmWpTalMRFbm86197f+xZRNKpNgUHRsSolztCzqDf6ve' +
-                                '33rNJGirpfF0sPjD0qLDQa3H6bJInTKSqkswf+MsOjFeFI3ScrVZLitwyRJLxaaFNrVGh8bGVwEReV0SSqTa' +
-                                'FNu1+LRmh866l0u+3UpFU/sBfZFMWFSUCDYWxyONIJJVqU9DcSqKCMzAVSpEfmEgqPi04MI6cMpOmqyajkok' +
-                                'k8gf+/AOjLCoirtkVigz5QMOn+TatMEJ1mWameHKjbm2CvOZWHhWczKqR+ljRmZ6mMcLcA6M8KjhzOeNjmRF' +
-                                '8qltZjP3A6H6uMkLZ23R9fHwsELfrFpZgt2neYWiyZci79kEeVMHNuoWlWJvbUfFVkfBR03f9xItr2/e6ZSn' +
-                                'YmluFtBekq0ZsF3LHBcfa3MquiphBYs8T9UoMiCSFJGvT7j8VRyiWab/1/li/Dz0qSSHI2rRaVHB6W/w2ND/' +
-                                'X0EkKQcamFaNCKLx+Mm1+xCCUFBKzuXW/VBthb25w+jQjj1ZSCMwDo1pU9OacbytTN4PspzZKSSFY1BVWioq' +
-                                '5ub9/8HViUUgqKSSGTauM71TKWMgKpJUUAs2mpVHBxvctTYPtjERaSSHQ7+DiqJjrnf5Qf3vDsCm1pJAoB0b' +
-                                'hYcjs+a/xln0yFJJLCoFyYBREBd8umZ8aq4ZeUkiUqMgZIQ8/25K8rSuklxSSxKY5UaFvFw0t8Wn9z5BKYtO' +
-                                'RXd9p1p4x36knhUQeGJZviJbtoqGuGjJfnyzEB4Z5GMbdJZ8nqUKiSSEQB4YRFT0WfqUvlrJqiCaFJLJp91l' +
-                                'Ps2fedlFZSD9dUE0KAW9u3c/pVWENPytxbwvIJoWAHxhJVJRtF424t1G8KTTYgTGqul005DKlnBSCtXYUFXy' +
-                                '7jPf3W9nbKCeFYJFHRcXtorEQkE8KyfD1oKi75LNNPykEm1+rbxeN7/STQvJ/XyS2auivmTPBehv5pDgbN4P' +
-                                'zsGbOwsI5SIozsk3jH0smSMM9CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg3PAfRD' +
-                                'WjQM3VeT0AAAAASUVORK5CYII='
-                                /* eslint-enable max-len */
-                            }
-                        }]
-                    });
+            onDrop:
+                function (sidebar: Sidebar, dropContext: Cell|Row): void|Cell {
+                    if (sidebar && dropContext) {
+                        return sidebar.onDropNewComponent(dropContext, {
+                            cell: '',
+                            type: 'html',
+                            elements: [{
+                                tagName: 'img',
+                                attributes: {
+                                    /* eslint-disable max-len */
+                                    src: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABIFBMVEX//' +
+                                    '/93dY2j7Llkmp+AhegwQ2uf67ZblZqBhOtlnKBjm5yAheql8Lt2c4wtPmh1b4t6f+d3dIhxb4h5fufw9Pj3/' +
+                                    'fllmaF8iN53jNBYk5rz9P1nmKbP3OR5i9Vtk7jY9+G38Mitxc/O9dru+/Kr7r/F89Lk+et/g988Unc1SHBAW' +
+                                    'XuYur5woqfS4eLZ3vO3y9fW1/jl7PGanu1+qLFwkb+rru+/wfObucSLj+puk7hzj8fv7/xqlbCjp+61uPHH1' +
+                                    '9/IyvWGrLfn6PuGmqZ6ebig4biOraZ+gdJ6e6+Uvqx/hpab0LJ8f8Z5eaNmeqJejZpeYoFOcIpZgZRUeJNRW' +
+                                    'n2vysyd17WJoaGCjpqgnrS1tceFr7ONjKXOztuVwq6wsMM1MXwqAAAGOElEQVR4nO2aeVcURxTF6WWmG2djF' +
+                                    'yEJIw4oigZxCVFURInGJSiuaEy+/7dIVVd1d1V19TLhzOlHn/v7f87pe97td+9rmJoCAAAAAAAAAAAAAAAA' +
+                                    'AAAAAAAAAAAAAAAAAAAAAAAAVLhV9wNMnIu/1v0EE2ZnfvV23c8wWXbD/Tt1P8NEOZwJ7waX636KSXJvJly+' +
+                                    'cKnBPl0JO52LF7w7C3U/yMS4P+P7/pIX/Fb3g0yMvY7vh6ued+mnup9kQuzMsxGGv1/wvKWG+nS3wxU+YAqD' +
+                                    'p3U/y0Q45CP0Oz8zhd6lJ3U/zSR4NBMpvDjNFHpLDYyMhx1uUsYqVxg0sNpEUcFfxP1oiEHzKrgvRxje5S8' +
+                                    'ik9g0nx7M+1LhslDoNc2nu3KEPu9tYojNqja35FvIJUqFXtCoavOokygMV6XCRlWbh+kI/fCXZIgN8uljVeG' +
+                                    'DWKEXNKbaLPipSWVva5hPD5QRsmWaCGxOBd9TRhj3NimRXrXZWFsc+zc785pA2dukT8lVm7W2O1y7Mt5vHuk' +
+                                    'jjHsb0Wqz6Lrtdnu4PobIwxlfV7isKqT3dXHYdscU+dhQmPQ2Abmvi5tcoRA5qiRyxddN6vtXl1SF3tLEn3k' +
+                                    '8Ft0UJnJjs+wHB/OGQKW30aw2G213LJF75giV3iZ9SqyCb2oKI5HuxmZuhuzMmALV3kaz2ozcDAUid8OMQrW' +
+                                    '3kfTphjnEWOTQ0gbMqIgUXvUMiH1dzNi0SOQ9i0Ktt5H0qcWmqci2VnlWOpk94xu9TUCrgq/nDTGZZBKU960' +
+                                    'j1HubeBVJVfArhQpdtQ1koyJSuJxRSKzaDMskRipH65s781aFRm8TkKrgaxUUcpHdZ89f+LY3sZMVSCsyrlQ' +
+                                    'S6LpHg9nZwfMXnY6pMswsU49YtaliU9ft/jFwHGd2tvfSnGT0d9IMlCKjmk1HjoRNkokMU5WZ3kbOp4vl8tg' +
+                                    'I/xw4TirSefniamxX66qhVW2q2LT7queoMLu+feNHItXvbUR9mtvcFIGvB06G2dm3b6JJ2lYNra+LFUb4xaK' +
+                                    'Qi3SYyHDfalNK1cZ+YKgCjwY9q0Ixyb+OlzLdNPIpmWpTalMRFbm86197f+xZRNKpNgUHRsSolztCzqDf6ve' +
+                                    '33rNJGirpfF0sPjD0qLDQa3H6bJInTKSqkswf+MsOjFeFI3ScrVZLitwyRJLxaaFNrVGh8bGVwEReV0SSqTa' +
+                                    'FNu1+LRmh866l0u+3UpFU/sBfZFMWFSUCDYWxyONIJJVqU9DcSqKCMzAVSpEfmEgqPi04MI6cMpOmqyajkok' +
+                                    'k8gf+/AOjLCoirtkVigz5QMOn+TatMEJ1mWameHKjbm2CvOZWHhWczKqR+ljRmZ6mMcLcA6M8KjhzOeNjmRF' +
+                                    '8qltZjP3A6H6uMkLZ23R9fHwsELfrFpZgt2neYWiyZci79kEeVMHNuoWlWJvbUfFVkfBR03f9xItr2/e6ZSn' +
+                                    'YmluFtBekq0ZsF3LHBcfa3MquiphBYs8T9UoMiCSFJGvT7j8VRyiWab/1/li/Dz0qSSHI2rRaVHB6W/w2ND/' +
+                                    'X0EkKQcamFaNCKLx+Mm1+xCCUFBKzuXW/VBthb25w+jQjj1ZSCMwDo1pU9OacbytTN4PspzZKSSFY1BVWioq' +
+                                    '5ub9/8HViUUgqKSSGTauM71TKWMgKpJUUAs2mpVHBxvctTYPtjERaSSHQ7+DiqJjrnf5Qf3vDsCm1pJAoB0b' +
+                                    'hYcjs+a/xln0yFJJLCoFyYBREBd8umZ8aq4ZeUkiUqMgZIQ8/25K8rSuklxSSxKY5UaFvFw0t8Wn9z5BKYtO' +
+                                    'RXd9p1p4x36knhUQeGJZviJbtoqGuGjJfnyzEB4Z5GMbdJZ8nqUKiSSEQB4YRFT0WfqUvlrJqiCaFJLJp91l' +
+                                    'Ps2fedlFZSD9dUE0KAW9u3c/pVWENPytxbwvIJoWAHxhJVJRtF424t1G8KTTYgTGqul005DKlnBSCtXYUFXy' +
+                                    '7jPf3W9nbKCeFYJFHRcXtorEQkE8KyfD1oKi75LNNPykEm1+rbxeN7/STQvJ/XyS2auivmTPBehv5pDgbN4P' +
+                                    'zsGbOwsI5SIozsk3jH0smSMM9CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg3PAfRD' +
+                                    'WjQM3VeT0AAAAASUVORK5CYII='
+                                    /* eslint-enable max-len */
+                                }
+                            }]
+                        });
+                    }
                 }
-            }
         }, {
             text: 'datagrid',
             onDrop: function (
                 sidebar: Sidebar,
                 dropContext: Cell | Row
             ): Cell|void {
+                const headers = ['Apples', 'Pears', 'Plums'];
+                const columns = ((): Record<string, Array<string>> => {
+                    const makeRandomRows = (): Array<string> =>
+                        new Array(40).map(
+                            (): string => (10 * Math.random()).toFixed(2)
+                        );
+                    const cols: Record<string, Array<string>> = {};
+                    for (let i = 0; i < headers.length; ++i) {
+                        cols[headers[i]] = makeRandomRows();
+                    }
+                    return cols;
+                })();
 
-                // TODO: Add datagrid through the drag&drop
-                // if (sidebar && dropContext) {
-                //     return sidebar.onDropNewComponent(dropContext, {
-                //         cell: '',
-                //         type: 'datagrid'
-                //     });
-                // }
+                if (sidebar && dropContext) {
+                    return sidebar.onDropNewComponent(dropContext, {
+                        cell: '',
+                        type: 'DataGrid',
+                        store: new Dashboards.CSVStore(new DataTable(columns))
+                    } as any); // necessary for now
+                }
             }
         }
     ];
@@ -421,7 +433,7 @@ class Sidebar {
                     ' ' + ((sidebar.options || {}).className || '')
             },
             {},
-            sidebar.editMode.dashboard.container
+            sidebar.editMode.board.container
         );
     }
 
@@ -591,7 +603,7 @@ class Sidebar {
         const sidebar = this;
 
         // Call onCellResize events in active sidebar items.
-        addEvent(sidebar.editMode.dashboard, 'cellResize', function (): void {
+        addEvent(sidebar.editMode.board, 'cellResize', function (): void {
             let item;
 
             if (sidebar.activeTab) {
@@ -624,6 +636,12 @@ class Sidebar {
 
         if (sidebar.activeTab) {
             sidebar.activeTab.isActive = false;
+
+            // remove previous options
+            if (sidebar.componentEditableOptions) {
+                sidebar.componentEditableOptions.destroy();
+            }
+
             sidebar.activeTab.element.classList.remove(
                 EditGlobals.classNames.editSidebarTabActive
             );
@@ -676,18 +694,22 @@ class Sidebar {
             // detect position of right sidebar
             isRightSidebar = context ? this.detectRightSidebar() : false;
 
+            // apply sidebar init position
             if (isRightSidebar) {
                 sidebar.container.classList.add(
                     EditGlobals.classNames.editSidebarRight
                 );
-                sidebar.container.classList.add(
-                    EditGlobals.classNames.editSidebarRightShow
-                );
-            } else {
-                sidebar.container.classList.add(
-                    EditGlobals.classNames.editSidebarShow
-                );
             }
+
+            // run showing animation by adding css class
+            setTimeout(():void => {
+                sidebar.container.classList.add(
+                    EditGlobals.classNames[
+                        isRightSidebar ?
+                            'editSidebarRightShow' : 'editSidebarShow'
+                    ]
+                );
+            }, 0);
 
             // Disable resizer.
             if (editMode.resizer) {
@@ -711,7 +733,7 @@ class Sidebar {
 
         const editMode = this.editMode;
         const sidebar = editMode.sidebar;
-        const layoutWrapper = editMode.dashboard.layoutsWrapper;
+        const layoutWrapper = editMode.board.layoutsWrapper;
 
         if (sidebar) {
             return GUIElement.getOffsets(
@@ -750,7 +772,7 @@ class Sidebar {
             .remove(EditGlobals.classNames.editSidebarRight);
         sidebar.container.classList
             .remove(EditGlobals.classNames.editSidebarRightShow);
-        editMode.dashboard.container.style.paddingLeft = '';
+        editMode.board.container.style.paddingLeft = '';
 
         // Remove edit overlay if active.
         if (editMode.isEditOverlayActive) {
@@ -817,31 +839,57 @@ class Sidebar {
         const componentSettings = currentComponent &&
             currentComponent.editableOptions.getEditableOptions();
 
-        if (
-            sidebar.componentEditableOptions &&
-            cell.id === sidebar.componentEditableOptions.currentElementId
-        ) {
-            return;
-        }
-
         if (componentSettings) {
             const menuItems = {};
             const items: Array<string> = [];
-            const activeTab = sidebar.activeTab && sidebar.activeTab;
+            const activeTab = sidebar.activeTab;
             const activeTabContainer = activeTab && activeTab.content &&
                 activeTab && activeTab.content.container;
             let type;
+            let chartTypes = {};
 
             for (const key in componentSettings) {
                 if (componentSettings[key]) {
                     type = componentSettings[key].type;
+
+                    if (key === 'chartType') {
+                        const chartTypesEnum = [
+                            'column',
+                            'line',
+                            'scatter',
+                            'spline',
+                            'pie'
+                        ];
+
+                        // eslint-disable-next-line
+                        const chartOpts = (currentComponent as HighchartsComponent).options.chartOptions;
+
+                        const chartType = chartOpts &&
+                            (
+                                (chartOpts.chart && chartOpts.chart.type) ||
+                                (chartOpts.series && chartOpts.series[0].type)
+                            );
+
+                        if (
+                            chartType &&
+                            chartTypesEnum.indexOf(chartType) !== -1
+                        ) {
+                            chartTypes = {
+                                items: chartTypesEnum,
+                                value: chartType
+                            };
+                        } else {
+                            break;
+                        }
+                    }
 
                     (menuItems as any)[key] = {
                         id: key,
                         type: type === 'text' ? 'input' : type,
                         text: (lang as any)[key] || key,
                         isActive: true,
-                        value: componentSettings[key].value
+                        value: componentSettings[key].value,
+                        ...chartTypes
                     };
 
                     items.push(
@@ -917,6 +965,7 @@ class Sidebar {
 
                             if (newCell) {
                                 sidebar.editMode.setEditCellContext(newCell);
+                                sidebar.show(newCell);
                             }
                         }
                     );
@@ -943,6 +992,8 @@ class Sidebar {
             activeTab.contentContainer.querySelectorAll(
                 'input, textarea'
             ) || [];
+        const chartType = activeTab &&
+            activeTab.contentContainer.querySelectorAll('#chartType');
         const updatedSettings = {};
         const mountedComponent = (this.context as Cell).mountedComponent;
         let fieldId;
@@ -955,6 +1006,23 @@ class Sidebar {
                     (updatedSettings as any)[fieldId] = JSON.parse(
                         (formFields[i] as HTMLTextAreaElement).value
                     );
+
+                    if (
+                        fieldId === 'chartOptions' &&
+                        (updatedSettings as HighchartsComponent.ComponentOptions).chartOptions && // eslint-disable-line
+                        chartType &&
+                        chartType[0]
+                    ) {
+                        (updatedSettings as HighchartsComponent.ComponentOptions).chartOptions = // eslint-disable-line
+                            merge(
+                                (updatedSettings as HighchartsComponent.ComponentOptions).chartOptions, // eslint-disable-line
+                                {
+                                    chart: {
+                                        type: (chartType[0] as any).value
+                                    }
+                                }
+                            );
+                    }
                 } catch {
                     (updatedSettings as any)[fieldId] =
                         (formFields[i] as (HTMLInputElement)).value;

@@ -14,8 +14,6 @@
  *
  * */
 
-/* eslint-disable */
-
 'use strict';
 
 import type CSSJSONObject from '../CSSJSONObject';
@@ -61,7 +59,8 @@ class Row extends GUIElement {
                 layout,
                 {
                     id: id,
-                    parentContainerId: layout.container?.id ||
+                    parentContainerId:
+                        (layout.container && layout.container.id) ||
                         options.parentContainerId,
                     cellsJSON: options.cells,
                     style: options.style
@@ -121,7 +120,7 @@ class Row extends GUIElement {
                 rowClassName = layoutOptions.rowClassName || '';
 
             this.setElementContainer({
-                render: layout.dashboard.guiEnabled,
+                render: layout.board.guiEnabled,
                 parentContainer: parentContainer,
                 attribs: {
                     id: options.id,
@@ -182,7 +181,9 @@ class Row extends GUIElement {
             cellClassName = (row.layout.options || {}).cellClassName || '',
             cellsElements = pick(
                 row.options.cells,
-                row.container?.getElementsByClassName(cellClassName)
+                row.container && row.container.getElementsByClassName(
+                    cellClassName
+                )
             ) || [];
 
         let cellElement,
@@ -191,7 +192,7 @@ class Row extends GUIElement {
         for (i = 0, iEnd = cellsElements.length; i < iEnd; ++i) {
             cellElement = cellsElements[i];
             row.addCell(
-                row.layout.dashboard.guiEnabled ? cellElement : { id: '' },
+                row.layout.board.guiEnabled ? cellElement : { id: '' },
                 cellElement instanceof HTMLElement ? cellElement : void 0
             );
         }
@@ -225,6 +226,7 @@ class Row extends GUIElement {
                 if (cellJSON.options.mountedComponentJSON) {
                     componentsToMount.push({
                         cell: cell,
+                        // eslint-disable-next-line
                         mountedComponentJSON: cellJSON.options.mountedComponentJSON
                     });
                 }
@@ -250,6 +252,7 @@ class Row extends GUIElement {
      * The container for a new cell HTML element.
      *
      * @return {Cell}
+     * Returns the Cell object.
      */
     public addCell(
         options: Cell.Options,
@@ -266,8 +269,8 @@ class Row extends GUIElement {
         }
 
         // Set editMode events.
-        if (row.layout.dashboard.editMode) {
-            row.layout.dashboard.editMode.setCellEvents(cell);
+        if (row.layout.board.editMode) {
+            row.layout.board.editMode.setCellEvents(cell);
         }
 
         return cell;
@@ -288,13 +291,14 @@ class Row extends GUIElement {
             }
         }
 
-        row.layout.unmountRow(row);
-        const destroyLayout = layout.rows.length === 0;
+        if (row.layout) {
+            row.layout.unmountRow(row);
 
-        super.destroy();
+            super.destroy();
 
-        if (destroyLayout) {
-            layout.destroy();
+            if (layout.rows.length === 0) {
+                layout.destroy();
+            }
         }
     }
 
@@ -369,17 +373,23 @@ class Row extends GUIElement {
 
         if (cell.container) {
             if (nextCell && nextCell.container) {
-                nextCell.container.parentNode.insertBefore(cell.container, nextCell.container);
+                nextCell.container.parentNode.insertBefore(
+                    cell.container,
+                    nextCell.container
+                );
             } else if (prevCell && prevCell.container) {
-                prevCell.container.parentNode.insertBefore(cell.container, prevCell.container.nextSibling);
+                prevCell.container.parentNode.insertBefore(
+                    cell.container,
+                    prevCell.container.nextSibling
+                );
             } else if (!prevCell && !nextCell && row.container) {
                 row.container.appendChild(cell.container);
             }
 
             row.cells.splice(index, 0, cell);
             cell.row = row;
-            setTimeout(() => {
-                fireEvent(row, 'cellChange', { row, cell })
+            setTimeout(():void => {
+                fireEvent(row, 'cellChange', { row, cell });
             }, 0);
         }
     }
@@ -394,8 +404,8 @@ class Row extends GUIElement {
             this.cells.splice(cellIndex, 1);
         }
 
-        setTimeout(() => {
-            fireEvent(this, 'cellChange', { row: this, cell })
+        setTimeout(():void => {
+            fireEvent(this, 'cellChange', { row: this, cell });
         }, 0);
     }
 
@@ -436,12 +446,18 @@ class Row extends GUIElement {
     ): void {
         if (this.container) {
             const cnt = this.container,
-                isSet = cnt.classList.contains(EditGlobals.classNames.rowContextHighlight);
+                isSet = cnt.classList.contains(
+                    EditGlobals.classNames.rowContextHighlight
+                );
 
             if (!remove && !isSet) {
-                cnt.classList.add(EditGlobals.classNames.rowContextHighlight);
+                cnt.classList.add(
+                    EditGlobals.classNames.rowContextHighlight
+                );
             } else if (remove && isSet) {
-                cnt.classList.remove(EditGlobals.classNames.rowContextHighlight);
+                cnt.classList.remove(
+                    EditGlobals.classNames.rowContextHighlight
+                );
             }
         }
     }
@@ -468,11 +484,11 @@ class Row extends GUIElement {
                         cells: []
                     };
                 }
-    
+
                 if (rowLevels[cellOffsets.top].bottom < cellOffsets.bottom) {
                     rowLevels[cellOffsets.top].bottom = cellOffsets.bottom;
                 }
-    
+
                 rowLevels[cellOffsets.top].cells.push(cell);
             }
         }
@@ -484,7 +500,7 @@ class Row extends GUIElement {
         return rowLevelsArray;
     }
 
-    // Get row level with additional info 
+    // Get row level with additional info
     // on a specific Y position.
     public getRowLevelInfo(
         posY: number
@@ -499,7 +515,7 @@ class Row extends GUIElement {
                     index: i,
                     rowLevels: rowLevels,
                     rowLevel: rowLevels[i]
-                }
+                };
             }
         }
 
