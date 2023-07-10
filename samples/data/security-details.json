@@ -1,0 +1,2400 @@
+[
+    {
+      "dbgtime": "45",
+      "Id": "F0GBR06SU1",
+      "FundId": "FSGBR071VC",
+      "FundShareClassId": "F0GBR06SU1",
+      "PerformanceId": "0P00005U1J",
+      "InceptionDate": "2006-05-22T00:00:00",
+      "Isin": "SE0001718388",
+      "IndexFund": true,
+      "BrandingCompanyId": "BN0000081B",
+      "BrandingCompanyName": "Avanza",
+      "Name": "Avanza Zero",
+      "FundName": "Avanza Zero- Den avgiftsfria fonden",
+      "FundAttributes": {
+        "HedgeFund": "false",
+        "UCITS": "true"
+      },
+      "FundNetAssetValues": [
+        {
+          "CurrencyId": "SEK",
+          "DayEndDate": "2023-06-30T00:00:00",
+          "DayEndValue": 41836475262.0,
+          "MonthEndDate": "2023-06-30T00:00:00",
+          "MonthEndValue": 41836475262.0
+        }
+      ],
+      "Mifid": {
+        "SummaryRiskIndicator": 4,
+        "TimeHorizon": "L",
+        "RecommendedHoldingPeriod": "L"
+      },
+      "NetAssetValues": [
+        {
+          "CurrencyId": "SEK",
+          "DayEndDate": "2023-06-30T00:00:00",
+          "DayEndValue": 41836475262.0,
+          "MonthEndDate": "2023-06-30T00:00:00",
+          "MonthEndValue": 41836475262.0
+        }
+      ],
+      "ESG": {
+        "SustainabilityDate": "2023-04-30T00:00:00",
+        "SustainabilityRank": 3,
+        "EnvironmentalScore": 3.37,
+        "SocialScore": 8.24,
+        "GovernanceScore": 7.6,
+        "RawSustainabilityScore": 19.34005,
+        "AUMCoverage": 98.14471,
+        "PortfolioDate": "2023-04-30T00:00:00",
+        "SustainabilityRating": {
+          "Date": "2023-04-30T00:00:00",
+          "SustainabilityFundQuintile": 3,
+          "SustainabilityFundQuintileDesc": "Average"
+        },
+        "CarbonScore": {
+          "Date": "2022-12-31T00:00:00",
+          "LowCarbonDesignation": "Yes",
+          "CarbonRiskClassification": "Low Risk",
+          "CarbonRiskScore": 7.05,
+          "Average12MonthCarbonRiskScore": 7.24,
+          "Average12MonthFossilFuelExposure": 0.0,
+          "PercentAUMCoveredCarbon": 99.69,
+          "CarbonExposureScore": 19.66,
+          "CarbonManagementScore": 64.88,
+          "CarbonOperationsRisk": 3.23,
+          "CarbonProductsAndServicesRisk": 2.54,
+          "CarbonIntensity": 27.09,
+          "PercentOfAUMWithNegligibleCarbonRisk": 4.03,
+          "PercentOfAUMWithLowCarbonRisk": 73.63,
+          "PercentOfAUMWithMediumCarbonRisk": 22.35,
+          "OilSandsExtractionInvolvement": 0.0,
+          "ArcticOilAndGasExplorationInvolvement": 0.0,
+          "FossilFuelInvolvement": 0.0,
+          "CarbonSolutionsInvolvement": 20.29,
+          "ThermalCoalPowerGenerationInvolvement": 0.0,
+          "ThermalCoalExtractionInvolvement": 0.0,
+          "OilAndGasGenerationInvolvement": 0.0,
+          "OilAndGasProductionInvolvement": 0.0,
+          "OilAndGasProductsAndServiceInvolvement": 0.0,
+          "BenchmarkCarbonRiskScore": 7.81,
+          "CarbonRiskScorePercentRankInCategory": 24,
+          "Average12MonthCarbonRiskPercentRankInCategory": 23,
+          "CarbonExposureScorePercentRankInCategory": 72,
+          "CarbonManagementScorePercentRankInCategory": 72,
+          "CarbonOperationsRiskPercentRankInCategory": 59,
+          "CarbonProductsAndServicesRiskPercentRankInCategory": 26,
+          "CarbonIntensityPercentRankInCategory": 32
+        },
+        "ProductInvolvement": {
+          "Date": "2023-04-30T00:00:00",
+          "AbortiveContraceptivesStemCell": 4.47,
+          "AdultEntertainment": 0.0,
+          "Alcohol": 0.0,
+          "AnimalTesting": 9.48,
+          "ControversialWeapons": 0.0,
+          "FurAndSpecialtyLeather": 0.0,
+          "Gambling": 5.54,
+          "GMO": 0.0,
+          "MilitaryContracting": 0.0,
+          "Nuclear": 0.0,
+          "PalmOil": 0.0,
+          "Pesticides": 0.0,
+          "SmallArms": 0.0,
+          "ThermalCoal": 0.0,
+          "Tobacco": 0.0
+        },
+        "RatingAndScore": {
+          "Date": "2023-04-30T00:00:00",
+          "PortfolioDate": "2023-04-30T00:00:00",
+          "SustainabilityRatingDate": "2023-04-30T00:00:00",
+          "SustainabilityRating": 3,
+          "SustainabilityScore": 19.21,
+          "SustainabilityPercentRank": 44,
+          "SustainabilityAbsoluteRank": 1142,
+          "HistoricalSustainabilityScore": 19.34,
+          "EnvironmentalScore": 3.37,
+          "SocialScore": 8.24,
+          "GovernanceScore": 7.6,
+          "PercentAUMCoveredESG": 98.14471,
+          "NumberOfSecuritiesScoredESG": 29,
+          "PercentAUMCoveredControversy": 98.14,
+          "NumberOfSecuritiesScoredControversy": 29,
+          "NumberOfSecuritiesNotScoredControversy": 4,
+          "PercentAUMWithLow": 8.32694,
+          "PercentAUMWithBelowAverage": 48.73077,
+          "PercentAUMWithAverage": 42.94229,
+          "PercentAUMWithAboveAverage": 0.0,
+          "PercentAUMWithHigh": 0.0,
+          "SustainabilityCategoryAverage": 19.53,
+          "EnvironmentalCategoryAverage": 4.37,
+          "SocialCategoryAverage": 7.83,
+          "GovernanceCategoryAverage": 6.47
+        }
+      },
+      "GlobalCategoryId": "$GC$EUEQLC",
+      "GlobalCategoryName": "Aktier, Europa stora bolag",
+      "Domicile": "SWE",
+      "OngoingCharge": "0",
+      "OngoingChargeDate": "2022-03-10T00:00:00",
+      "SwedishFeature": {
+        "PPMCode": "734491"
+      },
+      "CollectedSRRI": {
+        "Date": "2022-12-31T00:00:00",
+        "Rank": 6
+      },
+      "CalculatedSRRI": {
+        "Date": "2023-06-30T00:00:00",
+        "Rank": 6
+      },
+      "PricingFrequency": "D$",
+      "YieldHistory": {
+        "Type": "52",
+        "Value": 0.0,
+        "EndDate": "2023-06-30T00:00:00"
+      },
+      "Currency": {
+        "Id": "SEK"
+      },
+      "CategoryBroadAssetClass": {
+        "Id": "$BCG$EQUTY",
+        "Name": "Equity"
+      },
+      "RiskAndRating": [
+        {
+          "Date": "2023-06-30T00:00:00",
+          "TimePeriod": "M36",
+          "RatingValue": 5
+        },
+        {
+          "Date": "2023-06-30T00:00:00",
+          "TimePeriod": "M60",
+          "RatingValue": 4
+        },
+        {
+          "Date": "2023-06-30T00:00:00",
+          "TimePeriod": "M120",
+          "RatingValue": 3
+        },
+        {
+          "Date": "2023-06-30T00:00:00",
+          "TimePeriod": "M255",
+          "RatingValue": 4
+        }
+      ],
+      "LastPrice": {
+        "Date": "2023-07-06T00:00:00",
+        "Value": 356.15,
+        "Currency": {
+          "Id": "SEK"
+        }
+      },
+      "InvestmentStrategy": "Fonden är en passivt förvaltad indexfond med målsättningen att ge fondandelsägarna en förmögenhetsutveckling som i så stor utsträckning som möjligt följer utvecklingen för SIX30RX-index. SIX30RX-index är uppbyggt kring de 30 värdemässigt mest omsatta aktierna på Stockholmsbörsen. Förutom överlåtbara värdepapper får fonden placera i fondandelar där SIX30RX-index är den underliggande tillgången och i derivatinstrument. Fonden får använda derivatinstrument i syfte att effektivisera förvaltningen. Fonden är en indexfond, vilket innebär att det är tillåtet att i fråga om aktier eller skuldförbindelser placera upp till 20 procent i ett och samma innehav. Vid exceptionella marknadsförhållanden kan fonden dock få Finansinspektionens tillstånd att placera upp till 35 procent i ett enda innehav.\r\nHögsta engångsinsättning är 25 000 SEK.",
+      "ManagementFee": 0.0,
+      "ActualManagementFee": 0.0,
+      "ProviderCompany": {
+        "Id": "0C00001KY4",
+        "Name": "Avanza Fonder",
+        "AddressLine1": "Regeringsgatan 103",
+        "Phone": "08-562 250 00",
+        "City": "Stockholm",
+        "Country": "Sweden",
+        "PostalCode": "111 39",
+        "Homepage": "http://www.avanzafonder.se"
+      },
+      "AdministratorCompany": {
+        "Name": "Avanza Fonder",
+        "AddressLine1": "Regeringsgatan 103",
+        "Phone": "08-562 250 00",
+        "City": "Stockholm",
+        "Country": "Sweden",
+        "PostalCode": "111 39",
+        "Homepage": "http://www.avanzafonder.se"
+      },
+      "ManagerList": [
+        {
+          "ManagerId": 172958.0,
+          "DisplayPreference": 2.0,
+          "GivenName": "Emilie",
+          "FamilyName": "Chawala",
+          "StartDate": "2019-04-01T00:00:00",
+          "ManagerProvidedBiography": ""
+        }
+      ],
+      "Documents": [
+        {
+          "DocumentId": "381343073",
+          "EncodedDocumentId": "06671c999286ddd7036a06e3cd04339e",
+          "EffectiveDate": "2022-03-10T00:00:00",
+          "FilingDate": "2022-03-10T00:00:00",
+          "Format": "PDF",
+          "DocumentTypes": [
+            "74"
+          ],
+          "Languages": [
+            "0L00000415"
+          ],
+          "DocumentTypeAttributes": [
+            "1156"
+          ],
+          "Markets": [
+            "WWE"
+          ]
+        },
+        {
+          "DocumentId": "454421520",
+          "EncodedDocumentId": "1545b567b417ff9edd2d1ee6e25336ba",
+          "EffectiveDate": "2023-06-26T00:00:00",
+          "FilingDate": "2023-06-27T00:00:00",
+          "Format": "PDF",
+          "DocumentTypes": [
+            "299"
+          ],
+          "Languages": [
+            "0L00000415"
+          ],
+          "DocumentTypeAttributes": [
+            "1646"
+          ],
+          "Markets": [
+            "WWE"
+          ]
+        }
+      ],
+      "TrailingPerformance": [
+        {
+          "CurrencyId": "SEK",
+          "Date": "2023-07-06T00:00:00",
+          "Type": "DayEnd",
+          "ReturnType": "ItPostTax",
+          "Return": [
+            {
+              "Value": 356.15,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "ClosePrice"
+            },
+            {
+              "Value": -3.0858,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "D0"
+            },
+            {
+              "Value": -1.79236,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "D1"
+            },
+            {
+              "Value": -2.02201,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "W1"
+            },
+            {
+              "Value": 12.35725,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M0"
+            },
+            {
+              "Value": -2.37651,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M1"
+            },
+            {
+              "Value": 3.23188,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 7.34523,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M6"
+            },
+            {
+              "Value": 20.02898,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 40.904406,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 68.400412,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M60"
+            },
+            {
+              "Value": 164.4613,
+              "Date": "2023-07-06T00:00:00",
+              "TimePeriod": "M120"
+            }
+          ]
+        },
+        {
+          "CurrencyId": "SEK",
+          "Date": "2023-06-30T00:00:00",
+          "Type": "MonthEnd",
+          "ReturnType": "ItPostTax",
+          "Return": [
+            {
+              "Value": 367.49,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "ClosePrice"
+            },
+            {
+              "Value": 15.93476,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M0"
+            },
+            {
+              "Value": 3.34655,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M1"
+            },
+            {
+              "Value": 5.30101,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 15.93476,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M6"
+            },
+            {
+              "Value": 26.88257,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 51.186915,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 70.087019,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M60"
+            }
+          ]
+        }
+      ],
+      "RiskStatistics": [
+        {
+          "CurrencyId": "SEK",
+          "CurrencyOption": "DISPLAYCURRENCY",
+          "Date": "2023-06-30T00:00:00",
+          "Type": "MonthEnd",
+          "ReturnType": "ItPostTax",
+          "benchmarkType": "CategoryPrimaryIndexId",
+          "Alphas": [
+            {
+              "Value": 5.1398,
+              "Frequency": "M",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 2.59433,
+              "Frequency": "M",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 1.94405,
+              "Frequency": "M",
+              "TimePeriod": "M60"
+            }
+          ],
+          "Betas": [
+            {
+              "Value": 0.89376,
+              "Frequency": "M",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 0.91987,
+              "Frequency": "M",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 0.95624,
+              "Frequency": "M",
+              "TimePeriod": "M60"
+            }
+          ],
+          "TrackingErrors": [
+            {
+              "Value": 3.73306,
+              "Frequency": "M",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 3.58424,
+              "Frequency": "M",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 2.94319,
+              "Frequency": "M",
+              "TimePeriod": "M60"
+            }
+          ],
+          "ArithmeticMeans": [
+            {
+              "Value": 2.1157,
+              "Frequency": "M",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 1.27266,
+              "Frequency": "M",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 1.01927,
+              "Frequency": "M",
+              "TimePeriod": "M60"
+            }
+          ],
+          "StandardDeviations": [
+            {
+              "Value": 17.24,
+              "Frequency": "M",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 17.17,
+              "Frequency": "M",
+              "TimePeriod": "M36"
+            },
+            {
+              "Value": 17.82,
+              "Frequency": "M",
+              "TimePeriod": "M60"
+            }
+          ],
+          "SharpeRatios": [
+            {
+              "Frequency": "M",
+              "TimePeriod": "M12",
+              "Value": 1.35417
+            },
+            {
+              "Frequency": "M",
+              "TimePeriod": "M36",
+              "Value": 0.85364
+            },
+            {
+              "Frequency": "M",
+              "TimePeriod": "M60",
+              "Value": 0.67061
+            }
+          ]
+        }
+      ],
+      "HistoricalPerformanceSeries": [
+        {
+          "Annualized": true,
+          "CurrencyId": "SEK",
+          "StartDate": "2012-01-01T00:00:00",
+          "Frequency": "Q",
+          "TimePeriod": "M3",
+          "ReturnType": "ItPostTax",
+          "Return": [
+            {
+              "Value": 5.30101,
+              "Annualized": true,
+              "Date": "2023-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 10.09842,
+              "Annualized": true,
+              "Date": "2023-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 11.88056,
+              "Annualized": true,
+              "Date": "2022-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -2.17865,
+              "Annualized": true,
+              "Date": "2022-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -9.63182,
+              "Annualized": true,
+              "Date": "2022-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -12.28551,
+              "Annualized": true,
+              "Date": "2022-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 8.10994,
+              "Annualized": true,
+              "Date": "2021-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -0.068,
+              "Annualized": true,
+              "Date": "2021-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 4.039,
+              "Annualized": true,
+              "Date": "2021-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 17.97068,
+              "Annualized": true,
+              "Date": "2021-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 3.1326,
+              "Annualized": true,
+              "Date": "2020-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 9.92307,
+              "Annualized": true,
+              "Date": "2020-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 12.9455,
+              "Annualized": true,
+              "Date": "2020-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -16.12036,
+              "Annualized": true,
+              "Date": "2020-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 8.07499,
+              "Annualized": true,
+              "Date": "2019-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 1.59192,
+              "Annualized": true,
+              "Date": "2019-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 6.03023,
+              "Annualized": true,
+              "Date": "2019-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 12.2263,
+              "Annualized": true,
+              "Date": "2019-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -14.88384,
+              "Annualized": true,
+              "Date": "2018-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 6.78516,
+              "Annualized": true,
+              "Date": "2018-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 3.10667,
+              "Annualized": true,
+              "Date": "2018-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -0.74366,
+              "Annualized": true,
+              "Date": "2018-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -3.33776,
+              "Annualized": true,
+              "Date": "2017-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 2.25188,
+              "Annualized": true,
+              "Date": "2017-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 2.31845,
+              "Annualized": true,
+              "Date": "2017-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 6.53739,
+              "Annualized": true,
+              "Date": "2017-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 5.67899,
+              "Annualized": true,
+              "Date": "2016-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 8.85927,
+              "Annualized": true,
+              "Date": "2016-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -0.66484,
+              "Annualized": true,
+              "Date": "2016-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -4.33497,
+              "Annualized": true,
+              "Date": "2016-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 2.21259,
+              "Annualized": true,
+              "Date": "2015-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -8.05369,
+              "Annualized": true,
+              "Date": "2015-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -5.86376,
+              "Annualized": true,
+              "Date": "2015-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 15.52717,
+              "Annualized": true,
+              "Date": "2015-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 4.3807,
+              "Annualized": true,
+              "Date": "2014-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 1.92308,
+              "Annualized": true,
+              "Date": "2014-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 3.14104,
+              "Annualized": true,
+              "Date": "2014-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 3.92769,
+              "Annualized": true,
+              "Date": "2014-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 5.82164,
+              "Annualized": true,
+              "Date": "2013-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 9.46069,
+              "Annualized": true,
+              "Date": "2013-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -1.66653,
+              "Annualized": true,
+              "Date": "2013-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 10.14032,
+              "Annualized": true,
+              "Date": "2013-03-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 3.0084,
+              "Annualized": true,
+              "Date": "2012-12-31T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 5.2911,
+              "Annualized": true,
+              "Date": "2012-09-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": -2.58576,
+              "Annualized": true,
+              "Date": "2012-06-30T00:00:00",
+              "TimePeriod": "M3"
+            },
+            {
+              "Value": 10.11387,
+              "Annualized": true,
+              "Date": "2012-03-31T00:00:00",
+              "TimePeriod": "M3"
+            }
+          ]
+        },
+        {
+          "Annualized": true,
+          "CurrencyId": "SEK",
+          "StartDate": "2012-01-01T00:00:00",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "ReturnType": "ItPostTax",
+          "Return": [
+            {
+              "Value": -13.24887,
+              "Annualized": true,
+              "Date": "2022-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 32.59906,
+              "Annualized": true,
+              "Date": "2021-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 7.40148,
+              "Annualized": true,
+              "Date": "2020-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 30.64978,
+              "Annualized": true,
+              "Date": "2019-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": -6.9818,
+              "Annualized": true,
+              "Date": "2018-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 7.74178,
+              "Annualized": true,
+              "Date": "2017-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 9.32268,
+              "Annualized": true,
+              "Date": "2016-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 2.20677,
+              "Annualized": true,
+              "Date": "2015-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 14.03955,
+              "Annualized": true,
+              "Date": "2014-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 25.45279,
+              "Annualized": true,
+              "Date": "2013-12-31T00:00:00",
+              "TimePeriod": "M12"
+            },
+            {
+              "Value": 16.33992,
+              "Annualized": true,
+              "Date": "2012-12-31T00:00:00",
+              "TimePeriod": "M12"
+            }
+          ]
+        }
+      ],
+      "HistoricalPeerGroupRanks": [
+        {
+          "Date": "2007-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 27.0,
+              "AbsoluteRank": 33.0
+            }
+          ]
+        },
+        {
+          "Date": "2008-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 19.0,
+              "AbsoluteRank": 26.0
+            }
+          ]
+        },
+        {
+          "Date": "2009-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 64.0,
+              "AbsoluteRank": 85.0
+            }
+          ]
+        },
+        {
+          "Date": "2010-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 53.0,
+              "AbsoluteRank": 74.0
+            }
+          ]
+        },
+        {
+          "Date": "2011-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 6.0,
+              "AbsoluteRank": 6.0
+            }
+          ]
+        },
+        {
+          "Date": "2012-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 52.0,
+              "AbsoluteRank": 65.0
+            }
+          ]
+        },
+        {
+          "Date": "2013-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 37.0,
+              "AbsoluteRank": 50.0
+            }
+          ]
+        },
+        {
+          "Date": "2014-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 73.0,
+              "AbsoluteRank": 100.0
+            }
+          ]
+        },
+        {
+          "Date": "2015-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 92.0,
+              "AbsoluteRank": 130.0
+            }
+          ]
+        },
+        {
+          "Date": "2016-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 44.0,
+              "AbsoluteRank": 62.0
+            }
+          ]
+        },
+        {
+          "Date": "2017-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 80.0,
+              "AbsoluteRank": 114.0
+            }
+          ]
+        },
+        {
+          "Date": "2018-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 57.0,
+              "AbsoluteRank": 92.0
+            }
+          ]
+        },
+        {
+          "Date": "2019-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 63.0,
+              "AbsoluteRank": 100.0
+            }
+          ]
+        },
+        {
+          "Date": "2020-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 80.0,
+              "AbsoluteRank": 132.0
+            }
+          ]
+        },
+        {
+          "Date": "2021-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 57.0,
+              "AbsoluteRank": 102.0
+            }
+          ]
+        },
+        {
+          "Date": "2022-12-31T00:00:00",
+          "CurrencyId": "SEK",
+          "Frequency": "Y",
+          "TimePeriod": "M12",
+          "PeerGroupRankDetails": [
+            {
+              "ClassificationMethod": "1",
+              "MarketingRegionId": "2",
+              "PeerGroupId": "1",
+              "PercentileRank": 9.0,
+              "AbsoluteRank": 13.0
+            }
+          ]
+        }
+      ],
+      "Benchmark": [
+        {
+          "Id": "EUCA000545",
+          "GlobalAssetClassId": "$BCG$EQUTY",
+          "Type": "Category",
+          "Name": "Sverige",
+          "TrailingPerformance": [
+            {
+              "CurrencyId": "SEK",
+              "Date": "2023-07-06T00:00:00",
+              "Type": "DayEnd",
+              "ReturnType": "ItPostTax",
+              "Return": [
+                {
+                  "Value": -2.64305,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "D0"
+                },
+                {
+                  "Value": -1.39173,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "D1"
+                },
+                {
+                  "Value": -1.78394,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "W1"
+                },
+                {
+                  "Value": 7.46977,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M0"
+                },
+                {
+                  "Value": -3.301,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M1"
+                },
+                {
+                  "Value": 0.85111,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 4.09785,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M6"
+                },
+                {
+                  "Value": 12.71386,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 31.425006,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M36"
+                },
+                {
+                  "Value": 56.481094,
+                  "Date": "2023-07-06T00:00:00",
+                  "TimePeriod": "M60"
+                }
+              ]
+            }
+          ],
+          "HistoricalPerformanceSeries": [
+            {
+              "Annualized": true,
+              "CurrencyId": "SEK",
+              "StartDate": "2012-01-01T00:00:00",
+              "Frequency": "Q",
+              "TimePeriod": "M3",
+              "ReturnType": "ItPostTax",
+              "Return": [
+                {
+                  "Value": 2.32388,
+                  "Annualized": true,
+                  "Date": "2023-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 7.69772,
+                  "Annualized": true,
+                  "Date": "2023-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 11.79682,
+                  "Annualized": true,
+                  "Date": "2022-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -3.40851,
+                  "Annualized": true,
+                  "Date": "2022-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -15.3355,
+                  "Annualized": true,
+                  "Date": "2022-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -13.96204,
+                  "Annualized": true,
+                  "Date": "2022-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 11.28818,
+                  "Annualized": true,
+                  "Date": "2021-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 0.60518,
+                  "Annualized": true,
+                  "Date": "2021-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 6.31016,
+                  "Annualized": true,
+                  "Date": "2021-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 12.06292,
+                  "Annualized": true,
+                  "Date": "2021-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 5.53993,
+                  "Annualized": true,
+                  "Date": "2020-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 14.42236,
+                  "Annualized": true,
+                  "Date": "2020-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 17.11595,
+                  "Annualized": true,
+                  "Date": "2020-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -19.63917,
+                  "Annualized": true,
+                  "Date": "2020-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 8.877,
+                  "Annualized": true,
+                  "Date": "2019-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 1.18888,
+                  "Annualized": true,
+                  "Date": "2019-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 6.66509,
+                  "Annualized": true,
+                  "Date": "2019-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 11.84939,
+                  "Annualized": true,
+                  "Date": "2019-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -14.38336,
+                  "Annualized": true,
+                  "Date": "2018-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 5.74128,
+                  "Annualized": true,
+                  "Date": "2018-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 3.735,
+                  "Annualized": true,
+                  "Date": "2018-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -0.28593,
+                  "Annualized": true,
+                  "Date": "2018-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -1.91435,
+                  "Annualized": true,
+                  "Date": "2017-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 1.18113,
+                  "Annualized": true,
+                  "Date": "2017-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 3.9985,
+                  "Annualized": true,
+                  "Date": "2017-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 6.08928,
+                  "Annualized": true,
+                  "Date": "2017-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 4.02156,
+                  "Annualized": true,
+                  "Date": "2016-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 9.5708,
+                  "Annualized": true,
+                  "Date": "2016-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -1.03973,
+                  "Annualized": true,
+                  "Date": "2016-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -3.24716,
+                  "Annualized": true,
+                  "Date": "2016-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 5.70377,
+                  "Annualized": true,
+                  "Date": "2015-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -6.78012,
+                  "Annualized": true,
+                  "Date": "2015-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -5.16441,
+                  "Annualized": true,
+                  "Date": "2015-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 15.57729,
+                  "Annualized": true,
+                  "Date": "2015-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 6.45484,
+                  "Annualized": true,
+                  "Date": "2014-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -1.01649,
+                  "Annualized": true,
+                  "Date": "2014-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 4.19442,
+                  "Annualized": true,
+                  "Date": "2014-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 5.20064,
+                  "Annualized": true,
+                  "Date": "2014-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 5.45179,
+                  "Annualized": true,
+                  "Date": "2013-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 9.92265,
+                  "Annualized": true,
+                  "Date": "2013-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -1.15421,
+                  "Annualized": true,
+                  "Date": "2013-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 8.79979,
+                  "Annualized": true,
+                  "Date": "2013-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 3.87861,
+                  "Annualized": true,
+                  "Date": "2012-12-31T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 6.00851,
+                  "Annualized": true,
+                  "Date": "2012-09-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": -4.96122,
+                  "Annualized": true,
+                  "Date": "2012-06-30T00:00:00",
+                  "TimePeriod": "M3"
+                },
+                {
+                  "Value": 10.88821,
+                  "Annualized": true,
+                  "Date": "2012-03-31T00:00:00",
+                  "TimePeriod": "M3"
+                }
+              ]
+            },
+            {
+              "Annualized": true,
+              "CurrencyId": "SEK",
+              "StartDate": "2012-01-01T00:00:00",
+              "Frequency": "Y",
+              "TimePeriod": "M12",
+              "ReturnType": "ItPostTax",
+              "Return": [
+                {
+                  "Value": -20.93547,
+                  "Annualized": true,
+                  "Date": "2022-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 33.23004,
+                  "Annualized": true,
+                  "Date": "2021-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 13.77251,
+                  "Annualized": true,
+                  "Date": "2020-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 31.61349,
+                  "Annualized": true,
+                  "Date": "2019-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": -6.36842,
+                  "Annualized": true,
+                  "Date": "2018-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 9.53425,
+                  "Annualized": true,
+                  "Date": "2017-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 9.21702,
+                  "Annualized": true,
+                  "Date": "2016-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 7.90605,
+                  "Annualized": true,
+                  "Date": "2015-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 15.61234,
+                  "Annualized": true,
+                  "Date": "2014-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 24.5406,
+                  "Annualized": true,
+                  "Date": "2013-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                },
+                {
+                  "Value": 16.17994,
+                  "Annualized": true,
+                  "Date": "2012-12-31T00:00:00",
+                  "TimePeriod": "M12"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Id": "F00000UU48",
+          "Type": "PrimaryBenchmark",
+          "Name": "SIX30RX"
+        },
+        {
+          "Id": "FOUSA05UXV",
+          "Type": "CategoryPrimaryIndex",
+          "Name": "MSCI Sweden NR SEK"
+        }
+      ],
+      "Portfolios": [
+        {
+          "Date": "2023-06-30T00:00:00",
+          "SuppressionExpiration": "2023-06-30T00:00:00",
+          "ReleaseTopHoldingDate": "2023-06-30T00:00:00",
+          "TopNcount": 0,
+          "CurrencyId": "SEK",
+          "Holdings": "SemiSuppressed",
+          "Id": 152603,
+          "TotalMarketValues": [
+            {
+              "Value": 41762906781.0,
+              "CurrencyId": "SEK",
+              "SalePosition": "N"
+            },
+            {
+              "Value": 41762906781.0,
+              "CurrencyId": "SEK",
+              "SalePosition": "N"
+            }
+          ],
+          "AssetAllocations": [
+            {
+              "Type": "MorningstarEUR3",
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 99.74912,
+                  "Type": "1"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "2"
+                },
+                {
+                  "Value": 0.25088,
+                  "Type": "3"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "4"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "99"
+                }
+              ]
+            }
+          ],
+          "RegionalExposure": [
+            {
+              "NotClassified": 0.25088,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 0.0,
+                  "Type": "1"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "2"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "3"
+                },
+                {
+                  "Value": 4.534306,
+                  "Type": "4"
+                },
+                {
+                  "Value": 3.079616,
+                  "Type": "5"
+                },
+                {
+                  "Value": 92.386078,
+                  "Type": "6"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "7"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "8"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "9"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "10"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "11"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "12"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "13"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "14"
+                },
+                {
+                  "Value": 100.0,
+                  "Type": "15"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "16"
+                }
+              ]
+            }
+          ],
+          "MarketCapitalBreakdown": [
+            {
+              "NotClassified": 0.25088,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 0.0,
+                  "Type": "1"
+                },
+                {
+                  "Value": 38.244648,
+                  "Type": "2"
+                },
+                {
+                  "Value": 59.883857,
+                  "Type": "3"
+                },
+                {
+                  "Value": 1.777469,
+                  "Type": "4"
+                },
+                {
+                  "Value": 0.094026,
+                  "Type": "5"
+                }
+              ]
+            }
+          ],
+          "StyleBoxBreakdown": [
+            {
+              "NotClassified": 0.25087,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 7.183511,
+                  "Type": "1"
+                },
+                {
+                  "Value": 13.156004,
+                  "Type": "2"
+                },
+                {
+                  "Value": 17.905129,
+                  "Type": "3"
+                },
+                {
+                  "Value": 14.319644,
+                  "Type": "4"
+                },
+                {
+                  "Value": 12.725976,
+                  "Type": "5"
+                },
+                {
+                  "Value": 32.838231,
+                  "Type": "6"
+                },
+                {
+                  "Value": 0.75741,
+                  "Type": "7"
+                },
+                {
+                  "Value": 0.0,
+                  "Type": "8"
+                },
+                {
+                  "Value": 1.114095,
+                  "Type": "9"
+                }
+              ]
+            }
+          ],
+          "GlobalStockSectorBreakdown": [
+            {
+              "NotClassified": 0.25088,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 3.16068,
+                  "Type": "101"
+                },
+                {
+                  "Value": 11.580954,
+                  "Type": "102"
+                },
+                {
+                  "Value": 22.596049,
+                  "Type": "103"
+                },
+                {
+                  "Value": 0.094026,
+                  "Type": "104"
+                },
+                {
+                  "Value": 3.365654,
+                  "Type": "205"
+                },
+                {
+                  "Value": 5.412298,
+                  "Type": "206"
+                },
+                {
+                  "Value": 3.166675,
+                  "Type": "308"
+                },
+                {
+                  "Value": 41.033004,
+                  "Type": "310"
+                },
+                {
+                  "Value": 9.590661,
+                  "Type": "311"
+                }
+              ]
+            }
+          ],
+          "IndustryGroupBreakdown": [
+            {
+              "NotClassified": 0.25089,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 1.602711,
+                  "Type": "10140"
+                },
+                {
+                  "Value": 1.557959,
+                  "Type": "10150"
+                },
+                {
+                  "Value": 0.59778,
+                  "Type": "10200"
+                },
+                {
+                  "Value": 0.739796,
+                  "Type": "10220"
+                },
+                {
+                  "Value": 4.859442,
+                  "Type": "10240"
+                },
+                {
+                  "Value": 5.383928,
+                  "Type": "10290"
+                },
+                {
+                  "Value": 7.846887,
+                  "Type": "10310"
+                },
+                {
+                  "Value": 14.749164,
+                  "Type": "10320"
+                },
+                {
+                  "Value": 0.094026,
+                  "Type": "10410"
+                },
+                {
+                  "Value": 3.365654,
+                  "Type": "20525"
+                },
+                {
+                  "Value": 4.534306,
+                  "Type": "20620"
+                },
+                {
+                  "Value": 0.878003,
+                  "Type": "20650"
+                },
+                {
+                  "Value": 3.166675,
+                  "Type": "30810"
+                },
+                {
+                  "Value": 4.996055,
+                  "Type": "31020"
+                },
+                {
+                  "Value": 3.338025,
+                  "Type": "31040"
+                },
+                {
+                  "Value": 6.476439,
+                  "Type": "31050"
+                },
+                {
+                  "Value": 26.22249,
+                  "Type": "31070"
+                },
+                {
+                  "Value": 9.590662,
+                  "Type": "31120"
+                }
+              ]
+            }
+          ],
+          "CashBreakdown": [
+            {
+              "NotClassified": 99.74912,
+              "SalePosition": "N",
+              "BreakdownValues": [
+                {
+                  "Value": 100.0,
+                  "Type": "14"
+                }
+              ]
+            }
+          ],
+          "CountryExposure": [
+            {
+              "NotClassified": 0.25088,
+              "SalePosition": "N",
+              "Type": "Equity",
+              "BreakdownValues": [
+                {
+                  "Value": 3.599952,
+                  "Type": "CHE"
+                },
+                {
+                  "Value": 3.079616,
+                  "Type": "FIN"
+                },
+                {
+                  "Value": 4.534306,
+                  "Type": "GBR"
+                },
+                {
+                  "Value": 88.786127,
+                  "Type": "SWE"
+                }
+              ]
+            }
+          ],
+          "EquityStatistics": {
+            "StyleBox": 6,
+            "StyleScore": 177.96486,
+            "SizeScore": 194.84668,
+            "ProspectiveEarningsYield": 15.65848,
+            "ProspectiveBookValueYield": 2.05025,
+            "ProspectiveRevenueYield": 1.93496,
+            "ProspectiveCashFlowYield": 11.67141,
+            "ProspectiveDividendYield": 3.50371,
+            "MarketCapital": 325179.18433
+          },
+          "PortfolioHoldings": [
+            {
+              "Id": "E0SWE0032C",
+              "ExternalId": "SE0017486889",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ATLAS COPCO A",
+              "PerformanceId": "0P0000A6G8",
+              "ISIN": "SE0017486889",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Atlas Copco AB Class A",
+              "Weighting": 9.51568,
+              "IndustryId": 31070020,
+              "MarketValue": 3974024930.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 25572876,
+              "ShareChange": 277401,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106020"
+            },
+            {
+              "Id": "E0SWE008IC",
+              "ExternalId": "SE0015811963",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "INVESTOR B",
+              "PerformanceId": "0P0000A6GL",
+              "ISIN": "SE0015811963",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Investor AB Class B",
+              "Weighting": 7.16549,
+              "IndustryId": 10310010,
+              "MarketValue": 2992515531.0,
+              "GlobalSectorId": "103",
+              "NumberOfShare": 13876724,
+              "ShareChange": 150528,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "40201030"
+            },
+            {
+              "Id": "E0SWE00ET0",
+              "ExternalId": "SE0000115446",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "VOLVO B",
+              "PerformanceId": "0P0000A6H8",
+              "ISIN": "SE0000115446",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Volvo AB Class B",
+              "Weighting": 6.46019,
+              "IndustryId": 31050010,
+              "MarketValue": 2697963047.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 12098489,
+              "ShareChange": 131239,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106010"
+            },
+            {
+              "Id": "E0SWE0062Y",
+              "ExternalId": "SE0015961909",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "HEXAGON B",
+              "PerformanceId": "0P0000A6GC",
+              "ISIN": "SE0015961909",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Hexagon AB Class B",
+              "Weighting": 6.28309,
+              "IndustryId": 31120060,
+              "MarketValue": 2623999158.0,
+              "GlobalSectorId": "311",
+              "NumberOfShare": 19766472,
+              "ShareChange": 214416,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "45203010"
+            },
+            {
+              "Id": "F00000VH3F",
+              "ExternalId": "SE0012673267",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "Evolution AB",
+              "PerformanceId": "0P00015JMP",
+              "ISIN": "SE0012673267",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Evolution AB",
+              "Weighting": 5.37042,
+              "IndustryId": 10290010,
+              "MarketValue": 2242844373.0,
+              "GlobalSectorId": "102",
+              "NumberOfShare": 1642147,
+              "ShareChange": 21533,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "25301010"
+            },
+            {
+              "Id": "E0SWE00LRP",
+              "ExternalId": "SE0007100581",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ASSA ABLOY B",
+              "PerformanceId": "0P0000A6HH",
+              "ISIN": "SE0007100581",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Assa Abloy AB Class B",
+              "Weighting": 4.98352,
+              "IndustryId": 31020040,
+              "MarketValue": 2081261322.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 8035758,
+              "ShareChange": 87168,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20102010"
+            },
+            {
+              "Id": "E0SWE007SV",
+              "ExternalId": "SE0000106270",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "H&M B",
+              "PerformanceId": "0P0000A6GI",
+              "ISIN": "SE0000106270",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Hennes & Mauritz AB Class B",
+              "Weighting": 4.84725,
+              "IndustryId": 10240020,
+              "MarketValue": 2024354057.0,
+              "GlobalSectorId": "102",
+              "NumberOfShare": 10931818,
+              "ShareChange": -72664,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "25504010"
+            },
+            {
+              "Id": "E0SWE00CI7",
+              "ExternalId": "SE0000667891",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SANDVIK",
+              "PerformanceId": "0P0000A6GY",
+              "ISIN": "SE0000667891",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Sandvik AB",
+              "Weighting": 4.80869,
+              "IndustryId": 31070020,
+              "MarketValue": 2008248908.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 9553991,
+              "ShareChange": 103637,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106020"
+            },
+            {
+              "Id": "E0SWE00CYU",
+              "ExternalId": "SE0000148884",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SEB A",
+              "PerformanceId": "0P0000A6H1",
+              "ISIN": "SE0000148884",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Skandinaviska Enskilda Banken AB Class A",
+              "Weighting": 4.68185,
+              "IndustryId": 10320020,
+              "MarketValue": 1955276641.0,
+              "GlobalSectorId": "103",
+              "NumberOfShare": 16410211,
+              "ShareChange": 178010,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "40101010"
+            },
+            {
+              "Id": "E0GBR00FA0",
+              "ExternalId": "GB0009895292",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ASTRA ZENECA",
+              "PerformanceId": "0P00007NYP",
+              "ISIN": "GB0009895292",
+              "CurrencyId": "GBP",
+              "CountryId": "GBR",
+              "SecurityName": "AstraZeneca PLC",
+              "Weighting": 4.52293,
+              "IndustryId": 20620010,
+              "MarketValue": 1888905204.0,
+              "GlobalSectorId": "206",
+              "NumberOfShare": 1220223,
+              "ShareChange": 39445,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "35202010"
+            },
+            {
+              "Id": "F0000005WS",
+              "ExternalId": "SE0017486897",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ATLAS COPCO B",
+              "PerformanceId": "0P0000A6PY",
+              "ISIN": "SE0017486897",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Atlas Copco AB Class B",
+              "Weighting": 3.8216,
+              "IndustryId": 31070020,
+              "MarketValue": 1596012733.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 11888363,
+              "ShareChange": 128959,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106020"
+            },
+            {
+              "Id": "E0SWE01ANC",
+              "ExternalId": "SE0000242455",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SWED A",
+              "PerformanceId": "0P0000A6LF",
+              "ISIN": "SE0000242455",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Swedbank AB Class A",
+              "Weighting": 3.75426,
+              "IndustryId": 10320020,
+              "MarketValue": 1567889969.0,
+              "GlobalSectorId": "103",
+              "NumberOfShare": 8621886,
+              "ShareChange": 93526,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "40101010"
+            },
+            {
+              "Id": "E0CHE011UP",
+              "ExternalId": "CH0012221716",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ABB LTD",
+              "PerformanceId": "0P0000A5G8",
+              "ISIN": "CH0012221716",
+              "CurrencyId": "CHF",
+              "CountryId": "CHE",
+              "SecurityName": "ABB Ltd",
+              "Weighting": 3.59092,
+              "IndustryId": 31070060,
+              "MarketValue": 1499671461.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 3536127,
+              "ShareChange": 40844,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20104010"
+            },
+            {
+              "Id": "F00000Z2EU",
+              "ExternalId": "SE0009922164",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "Essity B",
+              "PerformanceId": "0P0001AMQJ",
+              "ISIN": "SE0009922164",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Essity AB Class B",
+              "Weighting": 3.35721,
+              "IndustryId": 20525030,
+              "MarketValue": 1402068353.0,
+              "GlobalSectorId": "205",
+              "NumberOfShare": 4883554,
+              "ShareChange": 53953,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "30301010"
+            },
+            {
+              "Id": "E0SWE013Q3",
+              "ExternalId": "SE0015988019",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "NIBE Industrier",
+              "PerformanceId": "0P0000A6JK",
+              "ISIN": "SE0015988019",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "NIBE Industrier AB Class B",
+              "Weighting": 3.32965,
+              "IndustryId": 31040030,
+              "MarketValue": 1390558925.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 13579677,
+              "ShareChange": 147305,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20102010"
+            },
+            {
+              "Id": "E0SWE006AQ",
+              "ExternalId": "SE0000108656",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ERICSSON B",
+              "PerformanceId": "0P0000A6GF",
+              "ISIN": "SE0000108656",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Telefonaktiebolaget L M Ericsson Class B",
+              "Weighting": 3.28351,
+              "IndustryId": 31120010,
+              "MarketValue": 1371289876.0,
+              "GlobalSectorId": "311",
+              "NumberOfShare": 23476971,
+              "ShareChange": 330004,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "45201020"
+            },
+            {
+              "Id": "E0SWE00DK4",
+              "ExternalId": "SE0007100599",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SHB A",
+              "PerformanceId": "0P0000A6H5",
+              "ISIN": "SE0007100599",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Svenska Handelsbanken AB Class A",
+              "Weighting": 3.20415,
+              "IndustryId": 10320010,
+              "MarketValue": 1338146254.0,
+              "GlobalSectorId": "103",
+              "NumberOfShare": 14812334,
+              "ShareChange": 160676,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "40101010"
+            },
+            {
+              "Id": "E0SWE00ZGY",
+              "ExternalId": "FI4000297767",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "NDA SE",
+              "PerformanceId": "0P0000A6IV",
+              "ISIN": "FI4000297767",
+              "CurrencyId": "SEK",
+              "CountryId": "FIN",
+              "SecurityName": "Nordea Bank Abp",
+              "Weighting": 3.07189,
+              "IndustryId": 10320020,
+              "MarketValue": 1282912211.0,
+              "GlobalSectorId": "103",
+              "NumberOfShare": 10937018,
+              "ShareChange": -552861,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "40101010"
+            },
+            {
+              "Id": "E0SWE01QT6",
+              "ExternalId": "SE0000695876",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "ALFA LAVAL",
+              "PerformanceId": "0P0000A6MF",
+              "ISIN": "SE0000695876",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Alfa Laval AB",
+              "Weighting": 2.96243,
+              "IndustryId": 31070020,
+              "MarketValue": 1237198191.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 3148087,
+              "ShareChange": 30002,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106020"
+            },
+            {
+              "Id": "E0SWE0190S",
+              "ExternalId": "SE0000667925",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "TELIA COMPANY",
+              "PerformanceId": "0P0000A6L4",
+              "ISIN": "SE0000667925",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Telia Company AB",
+              "Weighting": 1.69598,
+              "IndustryId": 30810010,
+              "MarketValue": 708288860.0,
+              "GlobalSectorId": "308",
+              "NumberOfShare": 29948789,
+              "ShareChange": -861880,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "50101020"
+            },
+            {
+              "Id": "E0SWE00DK0",
+              "ExternalId": "SE0000112724",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SCA B",
+              "PerformanceId": "0P0000A6H4",
+              "ISIN": "SE0000112724",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Svenska Cellulosa AB Class B",
+              "Weighting": 1.59869,
+              "IndustryId": 10140010,
+              "MarketValue": 667661038.0,
+              "GlobalSectorId": "101",
+              "NumberOfShare": 4857483,
+              "ShareChange": 52692,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "15105010"
+            },
+            {
+              "Id": "E0SWE01KF2",
+              "ExternalId": "SE0020050417",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "BOLIDEN",
+              "PerformanceId": "0P0000A6M4",
+              "ISIN": "SE0020050417",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Boliden AB",
+              "Weighting": 1.55405,
+              "IndustryId": 10150030,
+              "MarketValue": 649017533.0,
+              "GlobalSectorId": "101",
+              "NumberOfShare": 2083189,
+              "ShareChange": 22597,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "15104020"
+            },
+            {
+              "Id": "E0SWE00CDB",
+              "ExternalId": "SE0000108227",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "SKF B",
+              "PerformanceId": "0P0000A6GV",
+              "ISIN": "SE0000108227",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "SKF AB B",
+              "Weighting": 1.45738,
+              "IndustryId": 31070050,
+              "MarketValue": 608642874.0,
+              "GlobalSectorId": "310",
+              "NumberOfShare": 3244365,
+              "ShareChange": 35344,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "20106020"
+            },
+            {
+              "Id": "E0SWE00VYY",
+              "ExternalId": "SE0005190238",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "TELE2 B",
+              "PerformanceId": "0P0000A6IC",
+              "ISIN": "SE0005190238",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Tele2 AB Class B",
+              "Weighting": 1.0894,
+              "IndustryId": 30810010,
+              "MarketValue": 454965443.0,
+              "GlobalSectorId": "308",
+              "NumberOfShare": 5105088,
+              "ShareChange": 55378,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "50102010"
+            },
+            {
+              "Id": "E0SWE00NBJ",
+              "ExternalId": "SE0000202624",
+              "DetailHoldingTypeId": "E",
+              "ExternalName": "GETINGE B",
+              "PerformanceId": "0P0000A6HN",
+              "ISIN": "SE0000202624",
+              "CurrencyId": "SEK",
+              "CountryId": "SWE",
+              "SecurityName": "Getinge AB Class B",
+              "Weighting": 0.8758,
+              "IndustryId": 20650010,
+              "MarketValue": 365758640.0,
+              "GlobalSectorId": "206",
+              "NumberOfShare": 1935743,
+              "ShareChange": 20998,
+              "LocalCurrencyCode": "SEK",
+              "GICSIndustryId": "35101010"
+            }
+          ],
+          "HoldingAggregates": [
+            {
+              "NumberOfHolding": 30,
+              "SalePosition": "N",
+              "HoldingsType": "Stock"
+            },
+            {
+              "SalePosition": "N",
+              "HoldingsType": "Bond"
+            }
+          ]
+        }
+      ]
+    }
+  ]
