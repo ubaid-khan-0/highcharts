@@ -34,24 +34,27 @@ class TreegraphLayout {
 
     /* *
      *
-     *  Functions
+     *  Static Functions
      *
      * */
 
     /**
      * Create dummy node, which allows to manually set the level of the node.
      *
-     * @param {TreegraphNode} parent
-     *        Parent node, to which the dummyNode should be connected.
-     * @param {TreegraphNode} child
-     *        Child node, which should be connected to dummyNode.
-     * @param {number} gapSize
-     *        Remainig gap size.
-     * @param {number} index
-     *        The index of the link.
+     * @param {Highcharts.TreegraphNode} parent
+     * Parent node, to which the dummyNode should be connected.
      *
-     * @return {TreegraphNode}
-     *         DummyNode as a parent of nodes, which column changes.
+     * @param {Highcharts.TreegraphNode} child
+     * Child node, which should be connected to dummyNode.
+     *
+     * @param {number} gapSize
+     * Remainig gap size.
+     *
+     * @param {number} index
+     * The index of the link.
+     *
+     * @return {Highcharts.TreegraphNode}
+     * DummyNode as a parent of nodes, which column changes.
      */
     public static createDummyNode(
         parent: TreegraphNode,
@@ -86,6 +89,12 @@ class TreegraphLayout {
         return dummyNode;
     }
 
+    /* *
+     *
+     *  Functions
+     *
+     * */
+
     /**
      * Walker algorithm of positioning the nodes in the treegraph improved by
      * Buchheim to run in the linear time. Basic algorithm consists of post
@@ -94,11 +103,12 @@ class TreegraphLayout {
      * modifiers is performed.
      * link to the paper: http://dirk.jivas.de/papers/buchheim02improving.pdf
      *
-     * @param {TreegraphSeries} series the Treegraph series
+     * @param {Highcharts.TreegraphSeries} series
+     * The Treegraph series
      */
     public calculatePositions(series: TreegraphSeries): void {
         const treeLayout = this;
-        const nodes = series.nodeList as TreegraphNode[];
+        const nodes = series.nodeList;
         this.resetValues(nodes);
         const root = series.tree;
         if (root) {
@@ -113,10 +123,10 @@ class TreegraphLayout {
     /**
      * Create dummyNodes as parents for nodes, which column is changed.
      *
-     * @param {Array<TreegraphNode>} nodes
-     *        All of the nodes.
+     * @param {Array<Highcharts.TreegraphNode>} nodes
+     * All of the nodes.
      */
-    public beforeLayout(nodes: TreegraphNode[]): void {
+    public beforeLayout(nodes: Array<TreegraphNode>): void {
         for (const node of nodes) {
             let index = 0;
 
@@ -144,9 +154,11 @@ class TreegraphLayout {
     }
     /**
      * Reset the caluclated values from the previous run.
-     * @param {TreegraphNode[]} nodes all of the nodes.
+     *
+     * @param {Array<Highcharts.TreegraphNode>} nodes
+     * All of the nodes.
      */
-    public resetValues(nodes: TreegraphNode[]): void {
+    public resetValues(nodes: Array<TreegraphNode>): void {
         for (const node of nodes) {
             node.mod = 0;
             node.ancestor = node;
@@ -161,10 +173,11 @@ class TreegraphLayout {
      * Assigns the value to each node, which indicates, what is his sibling
      * number.
      *
-     * @param {TreegraphNode} node
-     *        Root node
+     * @param {Highcharts.TreegraphNode} node
+     * Root node
+     *
      * @param {number} index
-     *        Index to which the nodes position should be set
+     * Index to which the nodes position should be set
      */
     public calculateRelativeX(node: TreegraphNode, index: number): void {
         const treeLayout = this,
@@ -181,8 +194,8 @@ class TreegraphLayout {
      * Recursive post order traversal of the tree, where the initial position
      * of the nodes is calculated.
      *
-     * @param {TreegraphNode} node
-     *        The node for which the position should be calculated.
+     * @param {Highcharts.TreegraphNode} node
+     * The node for which the position should be calculated.
      */
     public firstWalk(node: TreegraphNode): void {
         const treeLayout = this,
@@ -234,10 +247,11 @@ class TreegraphLayout {
      * Pre order traversal of the tree, which sets the final xPosition of the
      * node as its preX value and sum of all if it's parents' modifiers.
      *
-     * @param {TreegraphNode} node
-     *        The node, for which the final position should be calculated.
+     * @param {Highcharts.TreegraphNode} node
+     * The node, for which the final position should be calculated.
+     *
      * @param {number} modSum
-     *        The sum of modifiers of all of the parents.
+     * The sum of modifiers of all of the parents.
      */
     public secondWalk(node: TreegraphNode, modSum: number): void {
         const treeLayout = this;
@@ -252,10 +266,10 @@ class TreegraphLayout {
     }
 
     /**
-     *  Shift all children of the current node from right to left.
+     * Shift all children of the current node from right to left.
      *
-     * @param {TreegraphNode} node
-     *        The parent node.
+     * @param {Highcharts.TreegraphNode} node
+     * The parent node.
      */
     public executeShifts(node: TreegraphNode): void {
         let shift = 0,
@@ -283,9 +297,10 @@ class TreegraphLayout {
      * Finally we add a new thread (if necessary) and we adjust ancestor of
      * right outernal node or defaultAncestor.
      *
-     * @param {TreegraphNode} node
-     * @param {TreegraphNode} defaultAncestor
-     *        The default ancestor of the passed node.
+     * @param {Highcharts.TreegraphNode} node
+     *
+     * @param {Highcharts.TreegraphNode} defaultAncestor
+     * The default ancestor of the passed node.
      */
     public apportion(
         node: TreegraphNode,
@@ -364,10 +379,12 @@ class TreegraphLayout {
     /**
      * Shifts the subtree from leftNode to rightNode.
      *
-     * @param {TreegraphNode} leftNode
-     * @param {TreegraphNode} rightNode
+     * @param {Highcharts.TreegraphNode} leftNode
+     *
+     * @param {Highcharts.reegraphNode} rightNode
+     *
      * @param {number} shift
-     *        The value, by which the subtree should be moved.
+     * The value, by which the subtree should be moved.
      */
     public moveSubtree(
         leftNode: TreegraphNode,
@@ -387,10 +404,10 @@ class TreegraphLayout {
     /**
      * Clear values created in a beforeLayout.
      *
-     * @param {TreegraphNode[]} nodes
-     *        All of the nodes of the Treegraph Series.
+     * @param {Array<Highcharts.TreegraphNode>} nodes
+     * All of the nodes of the Treegraph Series.
      */
-    public afterLayout(nodes: TreegraphNode[]): void {
+    public afterLayout(nodes: Array<TreegraphNode>): void {
         for (const node of nodes) {
             if (node.oldParentNode) {
                 // Restore default connections
