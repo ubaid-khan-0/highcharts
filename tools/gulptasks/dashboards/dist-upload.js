@@ -418,5 +418,45 @@ async function distUpload() {
 
 }
 
+async function postUpload() {
+    const {
+        bucket,
+        release
+    } = require('yargs').argv;
 
-gulp.task('dashboards/dist-upload', distUpload);
+    const logLib = require('../lib/log');
+
+
+    const paths = [
+        {
+            from: 'dashboards/css/datagrid.css',
+            to: 'datagrid%version%css/datagrid.css'
+        }
+    ];
+
+    logLib.warn('\nHALT! \nYou might want to run the following commands to complete the release:\n');
+
+    const [major, minor] = release.split('.');
+
+    for (const p of paths) {
+        const toPaths = [
+            '/',
+            `/${major}/`,
+            `/${major}.${minor}/`,
+            `/${release}/`
+        ].map(
+            version => p.to.replace('%version%', version)
+        );
+
+        toPaths.forEach(toPath => {
+            // eslint-disable-next-line
+            console.log(`aws s3 cp s3://${bucket}/${p.from} s3://${bucket}/${toPath}\n`);
+        });
+    }
+}
+
+
+gulp.task('dashboards/dist-upload', gulp.series(
+    distUpload,
+    postUpload
+));
