@@ -32,6 +32,8 @@
 /utils/samples/temp/
 /utils/samples/nightly/
 
+/ts/tmp.tsconfig.jsonc
+
 /tree*
 
 exporting-server/java/highcharts-export/highcharts-export-web/pom.xml.amazon
