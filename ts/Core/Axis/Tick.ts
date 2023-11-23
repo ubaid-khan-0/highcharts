@@ -814,35 +814,47 @@ class Tick {
     ): void {
         const tick = this,
             axis = tick.axis,
+            tickmarkPlacement = axis.options.tickmarkPlacement,
             horiz = axis.horiz,
             pos = tick.pos,
             tickmarkOffset = pick(tick.tickmarkOffset, axis.tickmarkOffset),
             xy = tick.getPosition(horiz, pos, tickmarkOffset, old),
             x = xy.x,
             y = xy.y,
-            reverseCrisp = ((horiz && x === axis.pos + axis.len) ||
-                (!horiz && y === axis.pos)) ? -1 : 1; // #1480, #1687
+            avoidRender = index === -1 && (
+                horiz &&
+                axis.series.find((s): Boolean => s.type === 'column') &&
+                tickmarkPlacement === pick('between', 'on')
+            ),
+            reverseCrisp = (
+                (
+                    (horiz && x === axis.pos + axis.len) ||
+                    (!horiz && y === axis.pos)
+                ) ? -1 : 1
+            ), // #1480, #1687
+            labelOpacity = pick(
+                opacity,
+                tick.label && tick.label.newOpacity, // #15528
+                1
+            );
 
-        const labelOpacity = pick(
-            opacity,
-            tick.label && tick.label.newOpacity, // #15528
-            1
-        );
-        opacity = pick(opacity, 1);
-        this.isActive = true;
+        if (!avoidRender) {
+            opacity = pick(opacity, 1);
+            this.isActive = true;
 
-        // Create the grid line
-        this.renderGridLine(old, opacity, reverseCrisp);
+            // Create the grid line
+            this.renderGridLine(old, opacity, reverseCrisp);
 
-        // create the tick mark
-        this.renderMark(xy, opacity, reverseCrisp);
+            // create the tick mark
+            this.renderMark(xy, opacity, reverseCrisp);
 
-        // the label is created on init - now move it into place
-        this.renderLabel(xy, old, labelOpacity, index);
+            // the label is created on init - now move it into place
+            this.renderLabel(xy, old, labelOpacity, index);
 
-        tick.isNew = false;
+            tick.isNew = false;
 
-        fireEvent(this, 'afterRender');
+            fireEvent(this, 'afterRender');
+        }
     }
 
     /**
