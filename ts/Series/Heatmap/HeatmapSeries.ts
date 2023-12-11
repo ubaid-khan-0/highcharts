@@ -214,10 +214,10 @@ class HeatmapSeries extends ScatterSeries {
                             point = points[
                                 Math.ceil(pixelToPointScale * i)
                             ],
-                            { x, y } = point;
+                            { x, y, value } = point;
 
                         pixelData.set(
-                            colorFromPoint(point.value, point),
+                            colorFromPoint(value, point),
                             pointInPixels(x, y)
                         );
                     }
