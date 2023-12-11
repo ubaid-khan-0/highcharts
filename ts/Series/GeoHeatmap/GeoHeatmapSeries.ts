@@ -373,7 +373,7 @@ class GeoHeatmapSeries extends MapSeries {
                     for (let i = 0; i < points.length; i++) {
                         const p = points[i],
                             sourceArr = new Uint8ClampedArray(
-                                colorFromPoint(p.value, p)
+                                colorFromPoint(p)
                             ),
                             { lon, lat } = p.options;
 
