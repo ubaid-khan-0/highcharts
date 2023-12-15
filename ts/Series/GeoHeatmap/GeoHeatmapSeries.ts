@@ -371,11 +371,11 @@ class GeoHeatmapSeries extends MapSeries {
 
                     // First pixelData represents the geo coordinates
                     for (let i = 0; i < points.length; i++) {
-                        const p = points[i],
+                        const { options, visible, value } = points[i],
                             sourceArr = new Uint8ClampedArray(
-                                colorFromPoint(p)
+                                colorFromPoint(value, colorAxis, visible)
                             ),
-                            { lon, lat } = p.options;
+                            { lon, lat } = options;
 
                         if (isNumber(lon) && isNumber(lat)) {
                             pixelData.set(

@@ -165,25 +165,25 @@ class HeatmapSeries extends ScatterSeries {
                     const
                         { min: xMin, max: xMax } = xAxis.getExtremes(),
                         { min: yMin, max: yMax } = yAxis.getExtremes(),
-                        xDelta = xMax - xMin,
-                        yDelta = yMax - yMin,
+                        xSpan = xMax - xMin,
+                        ySpan = yMax - yMin,
                         dimensionRoundedBy = 8.0,
-                        finalX = Math.round(
+                        xFinal = Math.round(
                             dimensionRoundedBy * (
-                                (xDelta / colsize) / dimensionRoundedBy
+                                (xSpan / colsize) / dimensionRoundedBy
                             )
                         ),
-                        finalY = Math.round(
+                        yFinal = Math.round(
                             dimensionRoundedBy * (
-                                (yDelta / rowsize) / dimensionRoundedBy
+                                (ySpan / rowsize) / dimensionRoundedBy
                             )
                         ),
                         [
                             getXTransform,
                             getYTransform
                         ] = [
-                            [finalX, finalX / xDelta, xRev, 'ceil'],
-                            [finalY, finalY / yDelta, !yRev, 'floor']
+                            [xFinal, xFinal / xSpan, xRev, 'ceil'],
+                            [yFinal, yFinal / ySpan, !yRev, 'floor']
                         ].map(([last, scale, rev, rounding]): Function => (
                             rev ?
                                 (v: number): number => (
@@ -199,8 +199,8 @@ class HeatmapSeries extends ScatterSeries {
                                 )
                         )),
 
-                        w = canvas.width = finalX + 1,
-                        h = canvas.height = finalY + 1,
+                        w = canvas.width = xFinal + 1,
+                        h = canvas.height = yFinal + 1,
                         area = w * h,
                         pixelRate = pointCount / area,
                         pixelData = new Uint8ClampedArray(area * 4),
@@ -219,10 +219,10 @@ class HeatmapSeries extends ScatterSeries {
                             point = points[
                                 Math.ceil(pixelRate * i)
                             ],
-                            { x, y } = point;
+                            { x, y, value, visible } = point;
 
                         pixelData.set(
-                            colorFromPoint(point),
+                            colorFromPoint(value, colorAxis, visible),
                             getPixelAddr(x, y)
                         );
                     }
@@ -328,7 +328,7 @@ class HeatmapSeries extends ScatterSeries {
 
         // #3758, prevent resetting in setData
         options.pointRange = pick(options.pointRange, options.colsize || 1);
-        // general point range
+        // General point range
         this.yAxis.axisPointRange = options.rowsize || 1;
 
         // Bind new symbol names

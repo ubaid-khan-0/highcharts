@@ -18,7 +18,7 @@
 
 import type HeatmapSeries from './Heatmap/HeatmapSeries';
 import type GeoHeatmapSeries from './GeoHeatmap/GeoHeatmapSeries';
-import type Point from '../Core/Series/Point';
+import Point from '../Core/Series/Point';
 
 import H from '../Core/Globals.js';
 const {
@@ -26,7 +26,7 @@ const {
 } = H;
 
 import U from '../Core/Utilities.js';
-import HeatmapPoint from './Heatmap/HeatmapPoint';
+import ColorAxis from '../Core/Axis/Color/ColorAxis';
 const {
     defined,
     pick
@@ -46,41 +46,33 @@ const {
  * @param {number | null} value
  *        Value to find corresponding color on the color axis.
  *
- * @param {Highcharts.Point} point
- *        Point to find it's color from color axis.
- *
  * @return {number[]}
  *        Color in RGBa array.
  */
 function colorFromPoint(
-    point: Point
+    value: number | null,
+    colorAxis: ColorAxis,
+    visible: boolean
 ): number[] {
-    const {
-        series: { colorAxis },
-        value = null
-    } = point as HeatmapPoint;
 
-    if (colorAxis) {
-        const rgba = ((
-            colorAxis.toColor(
-                value || 0,
-                point
-            ) as string)
-            .split(')')[0]
-            .split('(')[1]
-            .split(',')
-            .map((s): number => pick(
-                parseFloat(s),
-                parseInt(s, 10)
-            ))
-        );
-        rgba[3] = pick(rgba[3], 1.0) * 255;
-        if (!defined(value) || !point.visible) {
-            rgba[3] = 0;
-        }
-        return rgba;
+    const rgba = ((
+        colorAxis.toColor(
+            value || 0,
+            new Point() as Point
+        ) as string)
+        .split(')')[0]
+        .split('(')[1]
+        .split(',')
+        .map((s): number => pick(
+            parseFloat(s),
+            parseInt(s, 10)
+        ))
+    );
+    rgba[3] = pick(rgba[3], 1.0) * 255;
+    if (!defined(value) || !visible) {
+        rgba[3] = 0;
     }
-    return [0, 0, 0, 0];
+    return rgba;
 }
 
 /**
