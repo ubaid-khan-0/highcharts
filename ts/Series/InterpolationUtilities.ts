@@ -26,6 +26,7 @@ const {
 } = H;
 
 import U from '../Core/Utilities.js';
+import HeatmapPoint from './Heatmap/HeatmapPoint';
 const {
     defined,
     pick
@@ -52,10 +53,13 @@ const {
  *        Color in RGBa array.
  */
 function colorFromPoint(
-    value: number | null,
     point: Point
 ): number[] {
-    const colorAxis = point.series.colorAxis;
+    const {
+        series: { colorAxis },
+        value = null
+    } = point as HeatmapPoint;
+
     if (colorAxis) {
         const rgba = ((
             colorAxis.toColor(
