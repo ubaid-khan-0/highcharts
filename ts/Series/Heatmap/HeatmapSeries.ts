@@ -158,7 +158,7 @@ class HeatmapSeries extends ScatterSeries {
                         points,
                         points: { length }
                     } = series,
-                    pointsLen = length - 1,
+                    pointCount = length - 1,
                     colorAxis = (chart.colorAxis && chart.colorAxis[0]);
 
                 if (canvas && ctx && colorAxis) {
@@ -167,19 +167,23 @@ class HeatmapSeries extends ScatterSeries {
                         { min: yMin, max: yMax } = yAxis.getExtremes(),
                         xDelta = xMax - xMin,
                         yDelta = yMax - yMin,
-                        imgMultiple = 8.0,
-                        lastX = Math.round(
-                            imgMultiple * ((xDelta / colsize) / imgMultiple)
+                        dimensionRoundedBy = 8.0,
+                        finalX = Math.round(
+                            dimensionRoundedBy * (
+                                (xDelta / colsize) / dimensionRoundedBy
+                            )
                         ),
-                        lastY = Math.round(
-                            imgMultiple * ((yDelta / rowsize) / imgMultiple)
+                        finalY = Math.round(
+                            dimensionRoundedBy * (
+                                (yDelta / rowsize) / dimensionRoundedBy
+                            )
                         ),
                         [
-                            transformX,
-                            transformY
+                            getXTransform,
+                            getYTransform
                         ] = [
-                            [lastX, lastX / xDelta, xRev, 'ceil'],
-                            [lastY, lastY / yDelta, !yRev, 'floor']
+                            [finalX, finalX / xDelta, xRev, 'ceil'],
+                            [finalY, finalY / yDelta, !yRev, 'floor']
                         ].map(([last, scale, rev, rounding]): Function => (
                             rev ?
                                 (v: number): number => (
@@ -194,36 +198,37 @@ class HeatmapSeries extends ScatterSeries {
                                     )
                                 )
                         )),
-                        canvasWidth = canvas.width = lastX + 1,
-                        canvasHeight = canvas.height = lastY + 1,
-                        canvasArea = canvasWidth * canvasHeight,
-                        pixelToPointScale = pointsLen / canvasArea,
-                        pixelData = new Uint8ClampedArray(canvasArea * 4),
 
-                        pointInPixels = (x: number, y: number): number => (
+                        w = canvas.width = finalX + 1,
+                        h = canvas.height = finalY + 1,
+                        area = w * h,
+                        pixelRate = pointCount / area,
+                        pixelData = new Uint8ClampedArray(area * 4),
+
+                        getPixelAddr = (x: number, y: number): number => (
                             Math.ceil(
-                                (canvasWidth * transformY(y - yMin)) +
-                                transformX(x - xMin)
+                                (w * getYTransform(y - yMin)) +
+                                getXTransform(x - xMin)
                             ) * 4
                         );
 
                     series.buildKDTree();
 
-                    for (let i = 0; i < canvasArea; i++) {
+                    for (let i = 0; i < area; i++) {
                         const
                             point = points[
-                                Math.ceil(pixelToPointScale * i)
+                                Math.ceil(pixelRate * i)
                             ],
-                            { x, y, value } = point;
+                            { x, y } = point;
 
                         pixelData.set(
-                            colorFromPoint(value, point),
-                            pointInPixels(x, y)
+                            colorFromPoint(point),
+                            getPixelAddr(x, y)
                         );
                     }
 
                     ctx.putImageData(
-                        new ImageData(pixelData, canvasWidth), 0, 0
+                        new ImageData(pixelData, w), 0, 0
                     );
 
                     if (image) {
