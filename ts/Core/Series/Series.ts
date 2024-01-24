@@ -62,7 +62,6 @@ import F from '../Foundation.js';
 const { registerEventOptions } = F;
 import H from '../Globals.js';
 const {
-    hasTouch,
     svg,
     win
 } = H;
@@ -2523,9 +2522,7 @@ class Series {
             }
 
             group.clip(animationClipRect);
-            if (markerGroup) {
-                markerGroup.clip(markerAnimationClipRect);
-            }
+            markerGroup?.clip(markerAnimationClipRect);
 
 
         // Run the animation
@@ -2537,8 +2534,12 @@ class Series {
             const finalBox = this.getClipBox(),
                 step = animation.step;
 
-            // Only do this when there are actually markers
-            if (markerGroup && markerGroup.element.childNodes.length) {
+            // Only do this when there are actually markers, or we have multiple
+            // series (#20473)
+            if (
+                markerGroup?.element.childNodes.length ||
+                chart.series.length > 1
+            ) {
 
                 // To provide as smooth animation as possible, update the marker
                 // group clipping in steps of the main group animation
@@ -2548,8 +2549,7 @@ class Series {
                     }
                     if (
                         fx.prop === 'width' &&
-                        markerAnimationClipRect &&
-                        markerAnimationClipRect.element
+                        markerAnimationClipRect?.element
                     ) {
                         markerAnimationClipRect.attr(
                             inverted ? 'height' : 'width',
@@ -3840,9 +3840,7 @@ class Series {
                         tracker.css({ cursor: options.cursor });
                     }
 
-                    if (hasTouch) {
-                        tracker.on('touchstart', onMouseOver);
-                    }
+                    tracker.on('touchstart', onMouseOver);
                 }
             });
         }
