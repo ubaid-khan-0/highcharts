@@ -3833,7 +3833,7 @@ class Series {
                     tracker.addClass('highcharts-tracker')
                         .on('mouseover', onMouseOver)
                         .on('mouseout', (e: PointerEvent): void => {
-                            pointer.onTrackerMouseOut(e);
+                            pointer?.onTrackerMouseOut(e);
                         });
 
                     if (options.cursor && !chart.styledMode) {
@@ -4464,7 +4464,7 @@ class Series {
             hoverSeries = chart.hoverSeries,
             pointer = chart.pointer;
 
-        pointer.setHoverChartIndex();
+        pointer?.setHoverChartIndex();
 
         // set normal state to previous series
         if (hoverSeries && hoverSeries !== series) {
